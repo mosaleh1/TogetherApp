@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "80841527552",
+    "project_id": "together-f0f2c",
+    "storage_bucket": "together-f0f2c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:80841527552:android:3e578b4db879f257cd63e5",
+        "android_client_info": {
+          "package_name": "tech.mosaleh.together"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "80841527552-2ip441j2atfnvfsd16sfln6gp9m800ik.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "tech.mosaleh.together",
+            "certificate_hash": "faba4b5950d23b640d8efad75692420f852d5950"
+          }
+        },
+        {
+          "client_id": "80841527552-f687eh9bpmuohvuc4gom3lc6dp6fp5g2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDr2Y9u7Qu5dV5bJpF5z1Th2y7LH-NmNb0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "80841527552-f687eh9bpmuohvuc4gom3lc6dp6fp5g2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
