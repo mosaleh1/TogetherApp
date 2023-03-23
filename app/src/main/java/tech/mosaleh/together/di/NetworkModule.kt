@@ -16,4 +16,5 @@ object NetworkModule {
     fun provideAuthService(): AuthService {
         return AuthServiceImpl(FirebaseAuth.getInstance())
     }
+    
 }

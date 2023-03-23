@@ -16,34 +16,23 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import dagger.hilt.android.AndroidEntryPoint
+import tech.mosaleh.together.presentation.screens.login.LoginScreen
 import tech.mosaleh.together.ui.theme.TogetherTheme
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             TogetherTheme {
+                LoginScreen(
 
+                )
             }
         }
     }
 
-    @Composable
-    fun LoginScreen(modifier: Modifier = Modifier) {
-        var uiState by remember {
-            mutableStateOf("")
-        }
-        Column(
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = modifier.fillMaxSize()
-        )
-        {
-            TextField(
-                value = uiState, onValueChange = { uiState = it }
-            )
-        }
-    }
 }
 
 

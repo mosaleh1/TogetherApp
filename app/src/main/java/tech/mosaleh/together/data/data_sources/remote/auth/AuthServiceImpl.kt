@@ -6,7 +6,8 @@ import tech.mosaleh.together.domain.utils.AuthService
 import tech.mosaleh.together.domain.utils.AuthState
 import kotlinx.coroutines.tasks.await
 
-class AuthServiceImpl(private val authProvider: FirebaseAuth) : AuthService {
+class AuthServiceImpl(private val authProvider: FirebaseAuth = FirebaseAuth.getInstance()) :
+    AuthService {
     private lateinit var state: AuthState
 
     override suspend fun signIn(email: String, password: String): AuthState {
