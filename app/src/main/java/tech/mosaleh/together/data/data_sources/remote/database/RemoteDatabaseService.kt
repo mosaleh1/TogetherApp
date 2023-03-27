@@ -1,23 +1,21 @@
 package tech.mosaleh.together.data.data_sources.remote.database
 
-import android.util.Log
 import com.google.android.gms.tasks.Tasks.await
 import com.google.firebase.database.*
-import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
-import kotlinx.coroutines.tasks.await
 import tech.mosaleh.together.domain.core.Resource
 import tech.mosaleh.together.domain.model.Case
 import tech.mosaleh.together.domain.utils.RemoteDatabaseService
+import kotlinx.coroutines.tasks.await
 
 class RemoteDatabaseServiceImpl(
     private val database: FirebaseDatabase
 ) : RemoteDatabaseService {
+    private var ref: DatabaseReference = database.getReference("cases")
 
     override fun getCases(): Flow<Resource<List<Case>>> = callbackFlow {
-        val ref = database.getReference("cases")
 
         val listener = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -36,5 +34,25 @@ class RemoteDatabaseServiceImpl(
         ref.addListenerForSingleValueEvent(listener)
 
         awaitClose()
+    }
+
+    private lateinit var resource: Resource<Any>
+    override suspend fun insertCase(case: Case): Resource<Any> {
+        try {
+            ref.push().setValue(case)
+                .apply {
+                    addOnSuccessListener {
+                        resource = Resource.Success(Any())
+                    }
+                    addOnFailureListener {
+                        resource = Resource.Error(it.message ?: "Can't insert Case")
+                    }
+                    await()
+                }
+
+        } catch (e: Exception) {
+            resource = Resource.Error(e.message ?: "Can't insert case")
+        }
+        return resource
     }
 }

@@ -14,7 +14,7 @@ import tech.mosaleh.together.domain.use_cases.EmailValidationUseCase
 import tech.mosaleh.together.domain.use_cases.PasswordValidationUseCase
 import tech.mosaleh.together.domain.use_cases.RegisterUserUseCase
 import tech.mosaleh.together.domain.utils.AuthState
-import tech.mosaleh.together.presentation.screens.utils.ViewModelEvents
+import tech.mosaleh.together.presentation.screens.utils.ValidationEvents
 import javax.inject.Inject
 
 @HiltViewModel
@@ -28,7 +28,7 @@ class RegistrationViewModel @Inject constructor(
     var state by mutableStateOf(RegistrationScreenUiState())
 
     // events from VM to UI
-    private val registrationEventsChannel = Channel<ViewModelEvents>()
+    private val registrationEventsChannel = Channel<ValidationEvents>()
     val validationEvent = registrationEventsChannel.receiveAsFlow()
 
     // events from UI to VM
@@ -88,7 +88,7 @@ class RegistrationViewModel @Inject constructor(
         )
         viewModelScope.launch {
             //sign in user
-            registrationEventsChannel.send(ViewModelEvents.Loading)
+            registrationEventsChannel.send(ValidationEvents.Loading)
 
             val authState = registerUser(
                 firstName = state.firstName,
@@ -101,10 +101,10 @@ class RegistrationViewModel @Inject constructor(
 
                 when (authState) {
                     is AuthState.Success -> {
-                        registrationEventsChannel.send(ViewModelEvents.Success)
+                        registrationEventsChannel.send(ValidationEvents.Success)
                     }
                     is AuthState.Failure -> {
-                        registrationEventsChannel.send(ViewModelEvents.Failure(authState.message))
+                        registrationEventsChannel.send(ValidationEvents.Failure(authState.message))
                     }
                 }
             }

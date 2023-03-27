@@ -16,10 +16,9 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import tech.mosaleh.together.presentation.components.CommonTextField
-import tech.mosaleh.together.presentation.components.Loading
 import tech.mosaleh.together.presentation.components.PasswordField
 import tech.mosaleh.together.presentation.screens.utils.Screens
-import tech.mosaleh.together.presentation.screens.utils.ViewModelEvents
+import tech.mosaleh.together.presentation.screens.utils.ValidationEvents
 
 @Composable
 fun RegistrationScreen(
@@ -30,7 +29,7 @@ fun RegistrationScreen(
     LaunchedEffect(key1 = context) {
         viewModel.validationEvent.collect { event ->
             when (event) {
-                is ViewModelEvents.Success -> {
+                is ValidationEvents.Success -> {
                     Toast.makeText(
                         context,
                         "Registered Successfully",
@@ -41,7 +40,7 @@ fun RegistrationScreen(
                         route = Screens.Home.route
                     )
                 }
-                is ViewModelEvents.Failure -> {
+                is ValidationEvents.Failure -> {
                     Toast.makeText(
                         context,
                         "Registration Failed+\n${event.message}",
@@ -49,7 +48,7 @@ fun RegistrationScreen(
                     )
                         .show()
                 }
-                ViewModelEvents.Loading -> {
+                ValidationEvents.Loading -> {
                 }
             }
         }

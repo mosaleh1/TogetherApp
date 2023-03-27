@@ -8,4 +8,6 @@ interface RemoteDatabaseService {
 
     fun getCases(): Flow<Resource<List<Case>>>
 
+    suspend fun insertCase(case: Case): Resource<Any>
+
 }

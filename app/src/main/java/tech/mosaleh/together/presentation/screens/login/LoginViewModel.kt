@@ -13,7 +13,7 @@ import tech.mosaleh.together.domain.use_cases.EmailValidationUseCase
 import tech.mosaleh.together.domain.use_cases.PasswordValidationUseCase
 import tech.mosaleh.together.domain.use_cases.SignInUserUseCase
 import tech.mosaleh.together.domain.utils.AuthState
-import tech.mosaleh.together.presentation.screens.utils.ViewModelEvents
+import tech.mosaleh.together.presentation.screens.utils.ValidationEvents
 import javax.inject.Inject
 
 
@@ -29,7 +29,7 @@ class LoginViewModel @Inject constructor(
     var state by mutableStateOf(LoginUiState())
 
     //channel for sending data to UI
-    private val loginEventsChannel = Channel<ViewModelEvents>()
+    private val loginEventsChannel = Channel<ValidationEvents>()
     val validationEvent = loginEventsChannel.receiveAsFlow()
 
     fun onEvent(event: LoginUiEvents) {
@@ -75,7 +75,7 @@ class LoginViewModel @Inject constructor(
             passwordError = null
         )
         viewModelScope.launch {
-            loginEventsChannel.send(ViewModelEvents.Loading)
+            loginEventsChannel.send(ValidationEvents.Loading)
             val authState = signInUseCase.invoke(
                 state.email,
                 state.password
@@ -83,12 +83,12 @@ class LoginViewModel @Inject constructor(
             when (authState) {
                 is AuthState.Success -> {
                     loginEventsChannel.send(
-                        ViewModelEvents.Success
+                        ValidationEvents.Success
                     )
                 }
                 is AuthState.Failure -> {
                     loginEventsChannel.send(
-                        ViewModelEvents.Failure(authState.message)
+                        ValidationEvents.Failure(authState.message)
                     )
                 }
             }
