@@ -27,7 +27,12 @@ class AuthServiceImpl(private val authProvider: FirebaseAuth = FirebaseAuth.getI
         return state
     }
 
-    override suspend fun registration(email: String, password: String): AuthState {
+    override suspend fun register(
+        firstName: String,
+        lastName: String,
+        email: String,
+        password: String
+    ): AuthState {
         try {
             authProvider.createUserWithEmailAndPassword(email, password).apply {
                 addOnSuccessListener {

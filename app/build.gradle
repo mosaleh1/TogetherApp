@@ -77,9 +77,11 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth-ktx'
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.3.9"
     //crashlytics
-    implementation platform('com.google.firebase:firebase-bom:30.3.2')
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-crashlytics'
+    // Add the dependency for the Realtime Database library
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation 'com.google.firebase:firebase-database-ktx'
 
 
     //hilt
@@ -87,6 +89,9 @@ dependencies {
     implementation 'androidx.hilt:hilt-navigation-compose:1.1.0-alpha01'
     kapt "com.google.dagger:hilt-compiler:2.44"
 
+
+    //coil
+    implementation "io.coil-kt:coil-compose:1.4.0"
 
     //
     implementation "androidx.compose.material:material:$compose_ui_version"

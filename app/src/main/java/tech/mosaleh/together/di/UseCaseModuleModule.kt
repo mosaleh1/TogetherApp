@@ -4,11 +4,10 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import tech.mosaleh.together.domain.repository.HomeRepository
 import tech.mosaleh.together.domain.repository.LoginRepository
-import tech.mosaleh.together.domain.use_cases.ConfirmPasswordValidationUseCase
-import tech.mosaleh.together.domain.use_cases.EmailValidationUseCase
-import tech.mosaleh.together.domain.use_cases.PasswordValidationUseCase
-import tech.mosaleh.together.domain.use_cases.SignInUserUseCase
+import tech.mosaleh.together.domain.repository.RegistrationRepository
+import tech.mosaleh.together.domain.use_cases.*
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -28,9 +27,18 @@ object UseCaseModuleModule {
         return PasswordValidationUseCase()
     }
 
-
     @Provides
     fun provideSignInUseCase(repo: LoginRepository): SignInUserUseCase {
         return SignInUserUseCase(repo)
+    }
+
+    @Provides
+    fun provideRegistrationUseCase(repo: RegistrationRepository): RegisterUserUseCase {
+        return RegisterUserUseCase(repo)
+    }
+
+    @Provides
+    fun provideGetCaseUseCase(homeRepo: HomeRepository): GetCasesUseCase {
+        return GetCasesUseCase(homeRepo)
     }
 }

@@ -4,6 +4,6 @@ interface AuthService {
 
     suspend fun signIn(email: String, password: String): AuthState
 
-    suspend fun registration(email: String, password: String): AuthState
+    suspend fun register(firstName: String, lastName: String, email: String, password: String): AuthState
 
 }
