@@ -48,7 +48,6 @@ class LoginViewModel @Inject constructor(
     }
 
     private fun submitLoginData() {
-
         // collect data
         val emailResult = emailValidationUseCase.invoke(state.email)
         val passwordResult = passwordValidationUseCase.invoke(state.password)

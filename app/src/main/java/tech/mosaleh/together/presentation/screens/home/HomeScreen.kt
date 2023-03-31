@@ -27,7 +27,8 @@ import tech.mosaleh.together.presentation.screens.utils.Screens
 
 @Composable
 fun HomeScreen(
-    viewModel: HomeViewModel = hiltViewModel(), navController: NavHostController
+    viewModel: HomeViewModel = hiltViewModel(),
+    navController: NavHostController
 ) {
     val context = LocalContext.current
     LaunchedEffect(key1 = context) {
@@ -40,31 +41,37 @@ fun HomeScreen(
     }
     Scaffold(modifier = Modifier.fillMaxSize(), floatingActionButton = {
         FloatingActionButton(onClick = {
-
+            navController.navigate(
+                route = Screens.AddCase.route
+            )
         }, content = {
             Icon(Icons.Filled.Add, contentDescription = "Add")
         })
     }) {
+        Log.d("TAG", "HomeScreen: $it")
         val state = viewModel.state.value
         val scrollState = rememberSaveable { mutableStateOf(0) }
         val columnState = rememberLazyListState(scrollState.value)
         viewModel.onEvent(HomeEvents.GetCases)
         if (state.cases.isNotEmpty()) {
-            CasesList(cases = state.cases, columnState = columnState)
+            CasesList(cases = state.cases, columnState = columnState, navController = navController)
         }
     }
 }
 
 @Composable
 fun CasesList(
-    cases: List<Case>, modifier: Modifier = Modifier, columnState: LazyListState
+    cases: List<Case>,
+    modifier: Modifier = Modifier,
+    columnState: LazyListState,
+    navController: NavHostController
 ) {
     LazyColumn(
         state = columnState, modifier = modifier.fillMaxSize()
     ) {
         items(cases) { case ->
             // Display the details of each case in a Composable
-            CaseCard(case = case) {
+            CaseCard(case = case, navController) {
 
             }
         }
