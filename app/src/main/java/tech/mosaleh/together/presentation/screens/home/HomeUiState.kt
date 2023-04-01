@@ -2,8 +2,10 @@ package tech.mosaleh.together.presentation.screens.home
 
 import tech.mosaleh.together.domain.model.Case
 
-data class HomeUiState(
-    val isLoading: Boolean = false,
-    val cases: List<Case> = emptyList(),
-    val error: String? = null
-)
+sealed class HomeUiState {
+    object Idle : HomeUiState()
+    object Loading : HomeUiState()
+    data class Success(val cases: List<Case> = emptyList()) : HomeUiState()
+    data class Error(val message: String) : HomeUiState()
+
+}

@@ -44,7 +44,7 @@ fun SetUpNavGraph(
         ) {
             val case = navController.previousBackStackEntry?.savedStateHandle?.get<Case>("case")
             case?.let {
-                CaseDetailsScreen(case)
+                CaseDetailsScreen(navController, case)
             }
         }
         composable(

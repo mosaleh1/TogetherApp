@@ -79,6 +79,7 @@ fun AddCaseScreen(
             uri?.let {
                 selectedImageBitMap.value =
                     getBitmapFromUri(context = context, uri = it)?.asImageBitmap()
+                viewModel.onEvent(AddCaseEvents.ImageUriChanged(uri.toString()))
             }
         })
         CommonTextField(

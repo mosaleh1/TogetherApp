@@ -23,28 +23,30 @@ class RemoteDatabaseServiceImpl(
     private val database: FirebaseDatabase,
 ) : RemoteDatabaseService {
     private var dbRef: DatabaseReference = database.getReference("cases")
-    private val storageRef = FirebaseStorage.getInstance().getReference("images")
+    private val storageRef = FirebaseStorage.getInstance().getReference("/images")
 
+    override suspend fun uploadImageToServer(byteArray: ByteArray): Resource<String> {
+        val imageName = "image_" + SimpleDateFormat(
+            "yyyyMMdd_HHmmss",
+            Locale.getDefault()
+        ).format(Date()) + ".jpg"
 
-    override fun getCases(): Flow<Resource<List<Case>>> = callbackFlow {
-
-        val listener = object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val cases = mutableListOf<Case>()
-                for (childSnapshot in snapshot.children) {
-                    val case = childSnapshot.getValue(Case::class.java)
-                    case?.let { cases.add(it) }
+        return try {
+            val imageRef = storageRef.child(imageName)
+            val uploadTask = imageRef.putBytes(byteArray)
+            val imageUrl = uploadTask.continueWithTask { task ->
+                if (!task.isSuccessful) {
+                    task.exception?.let {
+                        throw it
+                    }
                 }
-                trySend(Resource.Success(cases))
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                trySend(Resource.Error(error.message))
-            }
+                imageRef.downloadUrl
+            }.await().toString()
+            Resource.Success(imageUrl)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Resource.Error(message = "Unable to upload the image")
         }
-        dbRef.addListenerForSingleValueEvent(listener)
-
-        awaitClose()
     }
 
     override suspend fun insertCase(case: Case): Resource<Unit> {
@@ -66,22 +68,25 @@ class RemoteDatabaseServiceImpl(
         return resource
     }
 
-    override suspend fun uploadImageToServer(byteArray: ByteArray): Resource<String> {
-        var imageUrl = ""
-        val imageName = "image_" + SimpleDateFormat(
-            "yyyyMMdd_HHmmss",
-            Locale.getDefault()
-        ).format(Date()) + ".jpg"
 
-        val storageRef = storageRef.child("images/$imageName")
-        storageRef.putBytes(byteArray)
-        storageRef.downloadUrl.addOnSuccessListener { uriX ->
-            imageUrl = uriX.toString()
-        }.await()
+    override fun getCases(): Flow<Resource<List<Case>>> = callbackFlow {
+        trySend(Resource.Loading())
+        val listener = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val cases = mutableListOf<Case>()
+                for (childSnapshot in snapshot.children) {
+                    val case = childSnapshot.getValue(Case::class.java)
+                    case?.let { cases.add(it) }
+                }
+                trySend(Resource.Success(cases))
+            }
 
-        return if (imageUrl.isNotBlank()) Resource.Success(imageUrl)
-        else {
-            Resource.Error(message = "Unable to upload the image")
+            override fun onCancelled(error: DatabaseError) {
+                trySend(Resource.Error(error.message))
+            }
         }
+        dbRef.addListenerForSingleValueEvent(listener)
+        awaitClose()
     }
+
 }

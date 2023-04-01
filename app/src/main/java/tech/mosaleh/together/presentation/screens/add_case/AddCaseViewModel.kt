@@ -11,6 +11,8 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.async
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
@@ -65,7 +67,6 @@ class AddCaseViewModel
             }
             is AddCaseEvents.ImageUriChanged -> {
                 viewModelScope.launch {
-                    val imageUrl = getImageUrl()
                     state = state.copy(
                         imageUrl = event.imageUri
                     )
@@ -113,8 +114,9 @@ class AddCaseViewModel
                 imageUrl = state.imageUrl ?: "",
                 type = state.caseType,
                 status = state.caseStatus,
+                caseDescription = state.caseDescription,
             )
-            when (val result = insertCase.invoke(case)) {
+            when (val result = insertCase.invoke(case, getByteArray())) {
                 is Resource.Success -> {
                     addCaseEventsChannel.send(ValidationEvents.Success)
                 }
@@ -133,31 +135,30 @@ class AddCaseViewModel
         //else
     }
 
-    private suspend fun getImageUrl(): String {
-        var urlStr = ""
-        state.imageUrl?.let {
+    private suspend fun getByteArray(): ByteArray? {
+        if (state.imageUrl.isNullOrBlank()) {
+            return null
+        }
+        return viewModelScope.async {
             // Convert URI to Bitmap
-            val uri = Uri.parse(it)
+            val uri = Uri.parse(state.imageUrl)
             contentResolver
             val bitmap: Bitmap = MediaStore.Images.Media.getBitmap(contentResolver, uri)
             val outputStream = ByteArrayOutputStream()
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
-            val byteArray: ByteArray = outputStream.toByteArray()
-            val x = uploadImage.invoke(byteArray)
-            if (x is Resource.Success) {
-                urlStr = x.data!!
-            }
-        }
-        return urlStr
+            outputStream.toByteArray()
+        }.await()
     }
+
 
     private fun generateCaseId(): String {
-        return "Together" +
-                FirebaseAuth.getInstance().currentUser!!.uid.subSequence(0, 7) +
-                state.caseAddress.lat + state.caseAddress.lng
+        return "Together" + FirebaseAuth.getInstance().currentUser!!.uid.subSequence(
+            0,
+            7
+        ) + state.caseAddress.lat + state.caseAddress.lng
     }
-}
 
+}
 
 
 
