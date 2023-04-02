@@ -14,6 +14,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
 import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import tech.mosaleh.together.domain.core.Resource
@@ -90,10 +91,10 @@ class AddCaseViewModel
         //if valid
         if (hasError) {
             state = state.copy(
-                caseDescriptionError = descriptionValidator.errorMessage!!
+                caseDescriptionError = descriptionValidator.errorMessage ?: ""
             )
             state = state.copy(
-                caseAddressError = addressValidator.errorMessage!!
+                caseAddressError = addressValidator.errorMessage ?: ""
             )
             return
         }
@@ -116,19 +117,22 @@ class AddCaseViewModel
                 status = state.caseStatus,
                 caseDescription = state.caseDescription,
             )
-            when (val result = insertCase.invoke(case, getByteArray())) {
-                is Resource.Success -> {
-                    addCaseEventsChannel.send(ValidationEvents.Success)
-                }
-                is Resource.Error -> {
-                    addCaseEventsChannel.send(
-                        ValidationEvents.Failure(
-                            result.message ?: "Error while inserting the case "
+            insertCase.invoke(case, getByteArray()).collectLatest {
+                when (it) {
+
+                    is Resource.Success -> {
+                        addCaseEventsChannel.send(ValidationEvents.Success)
+                    }
+                    is Resource.Error -> {
+                        addCaseEventsChannel.send(
+                            ValidationEvents.Failure(
+                                it.message ?: "Error while inserting the case "
+                            )
                         )
-                    )
-                }
-                is Resource.Loading -> {
-                    addCaseEventsChannel.send(ValidationEvents.Loading)
+                    }
+                    is Resource.Loading -> {
+                        addCaseEventsChannel.send(ValidationEvents.Loading)
+                    }
                 }
             }
         }

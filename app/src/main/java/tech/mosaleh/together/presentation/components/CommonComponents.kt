@@ -5,6 +5,7 @@ import android.graphics.Canvas
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.net.Uri
+import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
@@ -20,22 +21,28 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.BottomCenter
 import androidx.compose.ui.Alignment.Companion.BottomEnd
+import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
 import androidx.core.content.ContextCompat
 import coil.compose.rememberImagePainter
 import tech.mosaleh.together.R
@@ -190,6 +197,95 @@ fun drawableToBitmap(drawable: Drawable): Bitmap {
     return bitmap
 }
 
+
+@Composable
+fun ConditionalProgressBar(onDismiss: () -> Unit) {
+    Dialog(
+        onDismissRequest = onDismiss,
+        DialogProperties(dismissOnBackPress = false, dismissOnClickOutside = false)
+    ) {
+        Box(
+            contentAlignment = Center,
+            modifier = Modifier
+                .size(100.dp)
+                .background(White, shape = RoundedCornerShape(8.dp))
+        ) {
+            CircularProgressIndicator()
+        }
+    }
+}
+
+@Composable
+fun ThankYouDialog(message: String, onDismiss: () -> Unit) {
+    Log.d("TAG", "ThankYouDialog: ")
+    Dialog(onDismissRequest = onDismiss) {
+        Surface(
+            modifier = Modifier.width(280.dp),
+            shape = RoundedCornerShape(8.dp),
+            elevation = 24.dp
+        ) {
+            Column(
+                modifier = Modifier.padding(16.dp),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Icon(
+                    imageVector = Icons.Filled.CheckCircle,
+                    contentDescription = "Checkmark",
+                    tint = MaterialTheme.colors.primary,
+                    modifier = Modifier.size(48.dp)
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(
+                    text = message,
+                    style = MaterialTheme.typography.h6,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.fillMaxWidth()
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+                TextButton(
+                    onClick = onDismiss,
+                    modifier = Modifier.align(Alignment.End)
+                ) {
+                    Text(text = "Dismiss")
+                }
+            }
+        }
+    }
+}
+
+
+@Composable
+fun ErrorDialog(
+    errorMessage: String,
+    onDismiss: () -> Unit
+) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = {
+            Text(
+                text = "Error",
+                style = MaterialTheme.typography.h6,
+                modifier = Modifier.padding(bottom = 8.dp)
+            )
+        },
+        text = {
+            Text(
+                text = errorMessage,
+                style = MaterialTheme.typography.body1,
+                modifier = Modifier.padding(bottom = 16.dp)
+            )
+        },
+        confirmButton = {
+            Button(
+                onClick = onDismiss
+            ) {
+                Text(text = "OK")
+            }
+        },
+        modifier = Modifier.padding(16.dp)
+    )
+}
 
 @Composable
 fun DropdownOutlinedTextField(

@@ -44,65 +44,71 @@ fun LoginScreen(
             }
         }
     }
-    Column(
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally,
+    Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(32.dp)
+            .padding(16.dp)
     ) {
-        OutlinedTextField(
-            value = state.email,
-            onValueChange = {
-                viewModel.onEvent(LoginUiEvents.EmailChanged(it))
-            },
-            isError = state.emailError != null,
-            modifier = Modifier.fillMaxWidth(),
-            placeholder = {
-                Text(text = "Email")
-            },
-            keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Email
-            ),
-        )
-        if (state.emailError != null) {
-            Text(
-                text = state.emailError, color = MaterialTheme.colors.error
-            )
-        }
-        Spacer(modifier = Modifier.height(16.dp))
-        PasswordField(
-            password = state.password, isError = state.passwordError != null
-        ) {
-            viewModel.onEvent(LoginUiEvents.PasswordChanged(it))
-        }
-        if (state.passwordError != null) {
-            Text(
-                text = state.passwordError, color = MaterialTheme.colors.error
-            )
-        }
-        Spacer(modifier = Modifier.height(16.dp))
-        Text(text = "Forgot Password", modifier = Modifier
-            .align(Alignment.Start)
-            .clickable {
 
-            })
-
-        Button(onClick = {
-            viewModel.onEvent(LoginUiEvents.Login)
-        }) {
-            Text(text = "Login")
-        }
-        Text(
-            text = "Create a new Account",
+        Column(
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
+                .fillMaxSize()
+        ) {
+            OutlinedTextField(
+                value = state.email,
+                onValueChange = {
+                    viewModel.onEvent(LoginUiEvents.EmailChanged(it))
+                },
+                isError = state.emailError != null,
+                modifier = Modifier.fillMaxWidth(),
+                placeholder = {
+                    Text(text = "Email")
+                },
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Email
+                ),
+            )
+            if (state.emailError != null) {
+                Text(
+                    text = state.emailError, color = MaterialTheme.colors.error
+                )
+            }
+            Spacer(modifier = Modifier.height(16.dp))
+            PasswordField(
+                password = state.password, isError = state.passwordError != null
+            ) {
+                viewModel.onEvent(LoginUiEvents.PasswordChanged(it))
+            }
+            if (state.passwordError != null) {
+                Text(
+                    text = state.passwordError, color = MaterialTheme.colors.error
+                )
+            }
+            Spacer(modifier = Modifier.height(16.dp))
+            Text(text = "Forgot Password", modifier = Modifier
                 .align(Alignment.Start)
                 .clickable {
-                    navController.navigate(
-                        route = Screens.Registration.route
-                    )
-                },
-        )
+
+                })
+
+            Button(onClick = {
+                viewModel.onEvent(LoginUiEvents.Login)
+            }) {
+                Text(text = "Login")
+            }
+            Text(
+                text = "Create a new Account",
+                modifier = Modifier
+                    .align(Alignment.Start)
+                    .clickable {
+                        navController.navigate(
+                            route = Screens.Registration.route
+                        )
+                    },
+            )
+        }
     }
 }
 

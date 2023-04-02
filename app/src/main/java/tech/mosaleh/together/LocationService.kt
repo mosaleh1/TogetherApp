@@ -1,6 +1,5 @@
 package tech.mosaleh.together
 
-import DefaultLocationClient
 import android.app.NotificationManager
 import android.app.Service
 import android.content.Context

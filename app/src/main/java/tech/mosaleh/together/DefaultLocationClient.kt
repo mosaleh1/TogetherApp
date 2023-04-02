@@ -1,3 +1,5 @@
+package tech.mosaleh.together
+
 import android.annotation.SuppressLint
 import android.content.Context
 import android.location.Location
@@ -13,8 +15,6 @@ import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.launch
-import tech.mosaleh.together.LocationClient
-import tech.mosaleh.together.domain.core.Resource
 import tech.mosaleh.together.domain.utils.hasLocationPermission
 
 class DefaultLocationClient(
@@ -60,3 +60,6 @@ class DefaultLocationClient(
         }
     }
 }
+
+
+//

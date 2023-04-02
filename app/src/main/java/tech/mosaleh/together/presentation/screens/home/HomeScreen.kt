@@ -1,5 +1,6 @@
 package tech.mosaleh.together.presentation.screens.home
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -13,6 +14,9 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.FilterList
+import androidx.compose.material.icons.filled.Logout
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
@@ -26,9 +30,11 @@ import tech.mosaleh.together.presentation.screens.home.components.CaseCard
 import tech.mosaleh.together.presentation.screens.utils.Screens
 
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun HomeScreen(
-    viewModel: HomeViewModel = hiltViewModel(), navController: NavHostController
+    viewModel: HomeViewModel = hiltViewModel(),
+    navController: NavHostController
 ) {
     val context = LocalContext.current
     LaunchedEffect(key1 = context) {
@@ -38,20 +44,49 @@ fun HomeScreen(
                 route = Screens.Login.route
             )
         }
-
         viewModel.onEvent(HomeEvents.GetCases)
     }
     val state by rememberUpdatedState(newValue = viewModel.state)
-    Scaffold(modifier = Modifier.fillMaxSize(), floatingActionButton = {
-        FloatingActionButton(onClick = {
-            navController.navigate(
-                route = Screens.AddCase.route
+
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(text = "Cases") },
+                actions = {
+                    var expanded by remember { mutableStateOf(false) }
+                    IconButton(onClick = { expanded = true }) {
+                        Icon(Icons.Filled.FilterList, contentDescription = "Filter")
+                    }
+                    DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+                        DropdownMenuItem(onClick = { /* Filter by Case Type */ }) {
+                            Text("Filter by Case Type")
+                        }
+                        DropdownMenuItem(onClick = { /* Filter by Case Needs */ }) {
+
+                        }
+                    }
+                    IconButton(onClick = {
+                        FirebaseAuth.getInstance().signOut()
+                        navController.navigate(
+                            route = Screens.Home.route
+                        )
+                    }) {
+                        Icon(Icons.Filled.Logout, contentDescription = "Log Out")
+                    }
+                }
             )
-        }, content = {
-            Icon(Icons.Filled.Add, contentDescription = "Add")
-        })
-    }) {
-        Log.d("TAG", "HomeScreen: $it")
+        },
+        modifier = Modifier.fillMaxSize(),
+        floatingActionButton = {
+            FloatingActionButton(onClick = {
+                navController.navigate(
+                    route = Screens.AddCase.route
+                )
+            }, content = {
+                Icon(Icons.Filled.Add, contentDescription = "Add")
+            })
+        }
+    ) {
         when (state) {
             is HomeUiState.Loading -> {
                 Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {

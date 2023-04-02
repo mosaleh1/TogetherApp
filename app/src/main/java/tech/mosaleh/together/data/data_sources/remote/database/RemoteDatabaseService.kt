@@ -18,6 +18,8 @@ import kotlinx.coroutines.tasks.await
 import java.io.ByteArrayOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 
 class RemoteDatabaseServiceImpl(
     private val database: FirebaseDatabase,
@@ -49,23 +51,18 @@ class RemoteDatabaseServiceImpl(
         }
     }
 
-    override suspend fun insertCase(case: Case): Resource<Unit> {
-        var resource: Resource<Unit> = Resource.Error("")
+    override suspend fun insertCase(case: Case): Resource<Unit> = suspendCoroutine { continuation ->
         try {
             dbRef.push().setValue(case)
-                .apply {
-                    addOnSuccessListener {
-                        resource = Resource.Success(Unit)
-                    }
-                    addOnFailureListener {
-                        resource = Resource.Error(it.message ?: "Can't insert Case")
-                    }
-                    await()
+                .addOnSuccessListener {
+                    continuation.resume(Resource.Success(Unit))
+                }
+                .addOnFailureListener {
+                    continuation.resume(Resource.Error(it.message ?: "Can't insert Case"))
                 }
         } catch (e: Exception) {
-            resource = Resource.Error(e.message ?: "Can't insert case")
+            continuation.resume(Resource.Error(e.message ?: "Can't insert case"))
         }
-        return resource
     }
 
 
