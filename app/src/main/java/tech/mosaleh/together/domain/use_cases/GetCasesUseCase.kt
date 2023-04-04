@@ -7,7 +7,7 @@ import tech.mosaleh.together.domain.repository.HomeRepository
 
 class GetCasesUseCase(private val repository: HomeRepository) {
 
-    operator fun invoke(): Flow<Resource<List<Case>>>
+    suspend operator fun invoke(): Resource<List<Case>>
     {
         return repository.getCasesFromFirebase()
     }

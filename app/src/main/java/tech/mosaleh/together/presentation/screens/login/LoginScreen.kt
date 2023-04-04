@@ -13,16 +13,31 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import tech.mosaleh.together.presentation.components.ConditionalProgressBar
+import tech.mosaleh.together.presentation.components.ErrorDialog
 import tech.mosaleh.together.presentation.components.PasswordField
 import tech.mosaleh.together.presentation.screens.utils.Screens
 import tech.mosaleh.together.presentation.screens.utils.ValidationEvents
 
 @Composable
 fun LoginScreen(
-    viewModel: LoginViewModel = hiltViewModel(), navController: NavHostController
+    viewModel: LoginViewModel = hiltViewModel(),
+    navController: NavHostController
 ) {
     val state = viewModel.state
     val context = LocalContext.current
+    var error by remember {
+        mutableStateOf("")
+    }
+    var isLoading by remember {
+        mutableStateOf(false)
+    }
+    var isDoneSuccessfully by remember {
+        mutableStateOf(false)
+    }
+    var isErrorShown by remember {
+        mutableStateOf(false)
+    }
     LaunchedEffect(key1 = context) {
         viewModel.validationEvent.collect { event ->
             when (event) {
@@ -30,16 +45,19 @@ fun LoginScreen(
                     Toast.makeText(
                         context, "Logged in Successfully", Toast.LENGTH_LONG
                     ).show()
-                    navController.navigate(
-                        route = Screens.Home.route
-                    )
+                    isLoading = false
+                    isDoneSuccessfully = true
                 }
                 is ValidationEvents.Failure -> {
                     Toast.makeText(
                         context, "Login Failed+\n${event.message}", Toast.LENGTH_LONG
                     ).show()
+                    isLoading = false
+                    isErrorShown = true
+                    error = event.message
                 }
                 ValidationEvents.Loading -> {
+                    isLoading = true
                 }
             }
         }
@@ -49,6 +67,22 @@ fun LoginScreen(
             .fillMaxSize()
             .padding(16.dp)
     ) {
+
+        if (isLoading) {
+            ConditionalProgressBar {
+
+            }
+        }
+        if (error.isNotBlank()) {
+            ErrorDialog(isShown = isErrorShown, errorMessage = error) {
+                isErrorShown = false
+            }
+        }
+        if (isDoneSuccessfully) {
+            navController.navigate(
+                route = Screens.Home.route
+            )
+        }
 
         Column(
             verticalArrangement = Arrangement.Center,

@@ -1,6 +1,5 @@
-package tech.mosaleh.together.presentation.screens.utils
-
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -11,58 +10,53 @@ import tech.mosaleh.together.presentation.screens.case_details.CaseDetailsScreen
 import tech.mosaleh.together.presentation.screens.home.HomeScreen
 import tech.mosaleh.together.presentation.screens.login.LoginScreen
 import tech.mosaleh.together.presentation.screens.registration.RegistrationScreen
-
+import tech.mosaleh.together.presentation.screens.utils.Screens
 
 @Composable
-fun SetUpNavGraph(
-    navController: NavHostController
-) {
-    NavHost(
-        navController = navController,
-        startDestination = Screens.Home.route
-    ) {
-        composable(
-            route = Screens.Home.route,
-        ) {
-            HomeScreen(navController = navController)
-        }
+fun SetUpNavGraph(navController: NavHostController) {
+    val screens = remember {
+        listOf(
+            Screen(
+                route = Screens.Home.route,
+                content = { HomeScreen(navController) }
+            ),
+            Screen(
+                route = Screens.Login.route,
+                content = { LoginScreen(navController = navController) }
+            ),
+            Screen(
+                route = Screens.Registration.route,
+                content = { RegistrationScreen(navController = navController) }
+            ),
+            Screen(
+                route = Screens.CaseDetails.route,
+                content = {
+                    val case =
+                        navController.previousBackStackEntry?.savedStateHandle?.get<Case>("case")
+                    case?.let {
+                        CaseDetailsScreen(navController, case)
+                    }
 
-        composable(
-            route = Screens.Login.route,
-        ) {
-            LoginScreen(navController = navController)
-        }
+                }
+            ),
+            Screen(
+                route = Screens.AddCase.route,
+                content = { AddCaseScreen(navController) }
+            ),
+            Screen(
+                route = Screens.LocationPicker.route,
+                content = { LocationPickerScreen(navController = navController) }
+            ),
+        )
+    }
 
-        composable(
-            route = Screens.Registration.route,
-        ) {
-            RegistrationScreen(navController = navController)
-        }
-
-        composable(
-            route = Screens.CaseDetails.route,
-        ) {
-            val case = navController.previousBackStackEntry?.savedStateHandle?.get<Case>("case")
-            case?.let {
-                CaseDetailsScreen(navController, case)
+    NavHost(navController = navController, startDestination = Screens.Home.route) {
+        screens.forEach { screen ->
+            composable(route = screen.route) {
+                screen.content()
             }
-        }
-        composable(
-            route = Screens.AddCase.route,
-        ) {
-            AddCaseScreen(navController)
-        }
-        composable(
-            route = Screens.LocationPicker.route,
-        ) {
-            LocationPickerScreen(navController = navController)
         }
     }
 }
 
-
-
-
-
-
-
+data class Screen(val route: String, val content: @Composable () -> Unit)

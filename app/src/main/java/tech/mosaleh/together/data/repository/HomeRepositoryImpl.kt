@@ -10,7 +10,7 @@ class HomeRepositoryImpl(
     private val databaseService: RemoteDatabaseService
 ) : HomeRepository {
 
-    override fun getCasesFromFirebase(): Flow<Resource<List<Case>>> {
+    override suspend fun getCasesFromFirebase(): Resource<List<Case>> {
         return databaseService.getCases()
     }
 

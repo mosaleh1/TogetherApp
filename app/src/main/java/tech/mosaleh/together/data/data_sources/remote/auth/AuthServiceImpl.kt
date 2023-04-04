@@ -3,52 +3,52 @@ package tech.mosaleh.together.data.data_sources.remote.auth
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
+import kotlinx.coroutines.GlobalScope.coroutineContext
 import tech.mosaleh.together.domain.utils.AuthService
 import tech.mosaleh.together.domain.utils.AuthState
 import kotlinx.coroutines.tasks.await
+import kotlin.coroutines.coroutineContext
+import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 
 class AuthServiceImpl(private val authProvider: FirebaseAuth = FirebaseAuth.getInstance()) :
     AuthService {
-    private lateinit var state: AuthState
 
-    override suspend fun signIn(email: String, password: String): AuthState {
+    override suspend fun signIn(email: String, password: String):
+            AuthState = suspendCoroutine { continuation ->
         try {
             authProvider.signInWithEmailAndPassword(email, password).apply {
                 addOnSuccessListener {
-                    state = AuthState.Success
+                    continuation.resume(AuthState.Success)
                 }
                 addOnFailureListener {
-                    state = AuthState.Failure(it.message ?: "Error while Login")
+                    continuation.resume(AuthState.Failure(it.message ?: "Error while Login"))
                 }
-                await()
             }
         } catch (ex: FirebaseException) {
-            state = AuthState.Failure("X${ex.message ?: "Error while Login"}")
+            continuation.resume(AuthState.Failure("X${ex.message ?: "Error while Login"}"))
         }
-        return state
     }
 
     override suspend fun register(
         firstName: String, lastName: String, email: String, password: String
-    ): AuthState {
+    ): AuthState = suspendCoroutine { continuation ->
         try {
             authProvider.createUserWithEmailAndPassword(email, password).apply {
                 addOnSuccessListener {
-                    state = AuthState.Success
                     val request = UserProfileChangeRequest.Builder()
                     request.displayName = firstName + lastName
                     it.user?.updateProfile(
                         request.build()
                     )
+                    continuation.resume(AuthState.Success)
                 }
                 addOnFailureListener {
-                    state = AuthState.Failure(it.message ?: "Error while Registration")
+                    continuation.resume(AuthState.Failure(it.message ?: "Error while Registration"))
                 }
-                await()
             }
         } catch (ex: FirebaseException) {
-            state = AuthState.Failure("X${ex.message ?: "Error while Registration"}")
+            continuation.resume(AuthState.Failure("X${ex.message ?: "Error while Registration"}"))
         }
-        return state
     }
 }

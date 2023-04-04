@@ -66,8 +66,8 @@ class RemoteDatabaseServiceImpl(
     }
 
 
-    override fun getCases(): Flow<Resource<List<Case>>> = callbackFlow {
-        trySend(Resource.Loading())
+    override suspend fun getCases(): Resource<List<Case>> = suspendCoroutine { continuation ->
+
         val listener = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val cases = mutableListOf<Case>()
@@ -75,15 +75,13 @@ class RemoteDatabaseServiceImpl(
                     val case = childSnapshot.getValue(Case::class.java)
                     case?.let { cases.add(it) }
                 }
-                trySend(Resource.Success(cases))
+                continuation.resume(Resource.Success(cases))
             }
 
             override fun onCancelled(error: DatabaseError) {
-                trySend(Resource.Error(error.message))
+                continuation.resume(Resource.Error(error.message))
             }
         }
         dbRef.addListenerForSingleValueEvent(listener)
-        awaitClose()
     }
-
 }

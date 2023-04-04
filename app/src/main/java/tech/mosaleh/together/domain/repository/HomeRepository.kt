@@ -6,6 +6,6 @@ import tech.mosaleh.together.domain.model.Case
 
 interface HomeRepository {
 
-    fun getCasesFromFirebase(): Flow<Resource<List<Case>>>
+    suspend fun getCasesFromFirebase(): Resource<List<Case>>
 
 }

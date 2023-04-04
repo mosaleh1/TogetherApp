@@ -9,6 +9,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
+import tech.mosaleh.together.domain.model.User
 import tech.mosaleh.together.domain.use_cases.ConfirmPasswordValidationUseCase
 import tech.mosaleh.together.domain.use_cases.EmailValidationUseCase
 import tech.mosaleh.together.domain.use_cases.PasswordValidationUseCase

@@ -7,8 +7,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.Button
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -16,6 +15,8 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import tech.mosaleh.together.presentation.components.CommonTextField
+import tech.mosaleh.together.presentation.components.ConditionalProgressBar
+import tech.mosaleh.together.presentation.components.ErrorDialog
 import tech.mosaleh.together.presentation.components.PasswordField
 import tech.mosaleh.together.presentation.screens.utils.Screens
 import tech.mosaleh.together.presentation.screens.utils.ValidationEvents
@@ -26,6 +27,18 @@ fun RegistrationScreen(
     navController: NavHostController
 ) {
     val context = LocalContext.current
+    var error by remember {
+        mutableStateOf("")
+    }
+    var isLoading by remember {
+        mutableStateOf(false)
+    }
+    var isDoneSuccessfully by remember {
+        mutableStateOf(false)
+    }
+    var isErrorShown by remember {
+        mutableStateOf(false)
+    }
     LaunchedEffect(key1 = context) {
         viewModel.validationEvent.collect { event ->
             when (event) {
@@ -36,9 +49,8 @@ fun RegistrationScreen(
                         Toast.LENGTH_LONG
                     )
                         .show()
-                    navController.navigate(
-                        route = Screens.Home.route
-                    )
+                    isLoading = false
+                    isDoneSuccessfully = true
                 }
                 is ValidationEvents.Failure -> {
                     Toast.makeText(
@@ -47,11 +59,30 @@ fun RegistrationScreen(
                         Toast.LENGTH_LONG
                     )
                         .show()
+                    error = event.message
+                    isLoading = false
+                    isErrorShown = true
                 }
                 ValidationEvents.Loading -> {
+                    isLoading = true
                 }
             }
         }
+    }
+    if (isLoading) {
+        ConditionalProgressBar {
+
+        }
+    }
+    if (error.isNotBlank()) {
+        ErrorDialog(isShown = isErrorShown, errorMessage = error) {
+            isErrorShown = false
+        }
+    }
+    if (isDoneSuccessfully) {
+        navController.navigate(
+            route = Screens.Home.route
+        )
     }
     val state = viewModel.state
     val scrollState = rememberScrollState()

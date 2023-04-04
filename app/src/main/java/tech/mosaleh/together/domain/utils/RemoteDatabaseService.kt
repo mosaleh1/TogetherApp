@@ -7,7 +7,7 @@ import java.io.ByteArrayOutputStream
 
 interface RemoteDatabaseService {
 
-    fun getCases(): Flow<Resource<List<Case>>>
+    suspend fun getCases(): Resource<List<Case>>
 
     suspend fun insertCase(case: Case): Resource<Unit>
     suspend fun uploadImageToServer(byteArray: ByteArray): Resource<String>

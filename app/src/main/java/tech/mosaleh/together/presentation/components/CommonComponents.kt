@@ -258,33 +258,37 @@ fun ThankYouDialog(message: String, onDismiss: () -> Unit) {
 @Composable
 fun ErrorDialog(
     errorMessage: String,
+    isShown: Boolean = false,
     onDismiss: () -> Unit
 ) {
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = {
-            Text(
-                text = "Error",
-                style = MaterialTheme.typography.h6,
-                modifier = Modifier.padding(bottom = 8.dp)
-            )
-        },
-        text = {
-            Text(
-                text = errorMessage,
-                style = MaterialTheme.typography.body1,
-                modifier = Modifier.padding(bottom = 16.dp)
-            )
-        },
-        confirmButton = {
-            Button(
-                onClick = onDismiss
-            ) {
-                Text(text = "OK")
-            }
-        },
-        modifier = Modifier.padding(16.dp)
-    )
+    if (isShown) {
+        AlertDialog(
+            onDismissRequest = onDismiss,
+            title = {
+                Text(
+                    text = "Error",
+                    style = MaterialTheme.typography.h6,
+                    modifier = Modifier.padding(bottom = 8.dp)
+                )
+            },
+            text = {
+                Text(
+                    text = errorMessage,
+                    style = MaterialTheme.typography.body1,
+                    modifier = Modifier.padding(bottom = 16.dp)
+                )
+            },
+            confirmButton = {
+
+                Button(
+                    onClick = onDismiss,
+                ) {
+                    Text(text = "OK")
+                }
+            },
+            modifier = Modifier.padding(16.dp)
+        )
+    }
 }
 
 @Composable

@@ -1,5 +1,6 @@
 package tech.mosaleh.together
 
+import SetUpNavGraph
 import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.content.Intent
@@ -18,31 +19,29 @@ import tech.mosaleh.together.presentation.screens.add_case.LocationPickerScreen
 import tech.mosaleh.together.presentation.screens.home.HomeScreen
 import tech.mosaleh.together.presentation.screens.login.LoginScreen
 import tech.mosaleh.together.presentation.screens.registration.RegistrationScreen
-import tech.mosaleh.together.presentation.screens.utils.SetUpNavGraph
 import tech.mosaleh.together.ui.theme.TogetherTheme
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            ActivityCompat.requestPermissions(
-                this,
-                arrayOf(
-                    ACCESS_FINE_LOCATION,
-                    ACCESS_COARSE_LOCATION,
-                ),
-                0
-            )
-            val user = FirebaseAuth.getInstance().currentUser
+        ActivityCompat.requestPermissions(
+            this,
+            arrayOf(
+                ACCESS_FINE_LOCATION,
+                ACCESS_COARSE_LOCATION,
+            ),
+            0
+        )
+        val user = FirebaseAuth.getInstance().currentUser
 
-            if (user != null) {
-                Intent(applicationContext, LocationService::class.java).apply {
-                    action = LocationService.ACTION_START
-                    startService(this)
-                }
+        if (user != null) {
+            Intent(applicationContext, LocationService::class.java).apply {
+                action = LocationService.ACTION_START
+                startService(this)
             }
-
+        }
+        setContent {
             TogetherTheme {
                 val navController = rememberNavController()
                 SetUpNavGraph(navController = navController)
