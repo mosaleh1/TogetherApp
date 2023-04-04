@@ -4,14 +4,9 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import tech.mosaleh.together.data.repository.DetailsRepositoryImpl
-import tech.mosaleh.together.data.repository.HomeRepositoryImpl
-import tech.mosaleh.together.data.repository.LoginRepositoryImpl
-import tech.mosaleh.together.data.repository.RegistrationRepositoryImpl
-import tech.mosaleh.together.domain.repository.DetailsRepository
-import tech.mosaleh.together.domain.repository.HomeRepository
-import tech.mosaleh.together.domain.repository.LoginRepository
-import tech.mosaleh.together.domain.repository.RegistrationRepository
+import tech.mosaleh.together.data.data_sources.remote.database.FireStoreClient
+import tech.mosaleh.together.data.repository.*
+import tech.mosaleh.together.domain.repository.*
 import tech.mosaleh.together.domain.utils.AuthService
 import tech.mosaleh.together.domain.utils.RemoteDatabaseService
 
@@ -36,5 +31,10 @@ object RepositoryModule {
     @Provides
     fun provideDetailsRepo(databaseService: RemoteDatabaseService): DetailsRepository {
         return DetailsRepositoryImpl(databaseService)
+    }
+
+    @Provides
+    fun provideLocationRepository(client: FireStoreClient): LocationRepository {
+        return LocationRepositoryImpl(client)
     }
 }

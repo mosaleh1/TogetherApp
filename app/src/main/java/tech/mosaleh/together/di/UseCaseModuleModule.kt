@@ -5,10 +5,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
-import tech.mosaleh.together.domain.repository.DetailsRepository
-import tech.mosaleh.together.domain.repository.HomeRepository
-import tech.mosaleh.together.domain.repository.LoginRepository
-import tech.mosaleh.together.domain.repository.RegistrationRepository
+import tech.mosaleh.together.domain.repository.*
 import tech.mosaleh.together.domain.use_cases.*
 
 @Module
@@ -57,5 +54,10 @@ object UseCaseModuleModule {
     @Provides
     fun provideUploadImageUseCase(repo: DetailsRepository): UploadCaseImageUseCase {
         return UploadCaseImageUseCase(repo)
+    }
+
+    @Provides
+    fun provideUpdateUserLastKnownLocationUseCase(locationRepository: LocationRepository): UpdateUserLastKnownLocationUseCase {
+        return UpdateUserLastKnownLocationUseCase(locationRepository)
     }
 }

@@ -7,6 +7,9 @@ import android.content.Intent
 import android.os.IBinder
 import androidx.core.app.NotificationCompat
 import com.google.android.gms.location.LocationServices
+import com.google.android.gms.maps.model.LatLng
+import com.google.firebase.auth.FirebaseAuth
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -14,8 +17,17 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import tech.mosaleh.together.data.data_sources.remote.database.FireStoreClientImpl
+import tech.mosaleh.together.data.repository.LocationRepositoryImpl
+import tech.mosaleh.together.domain.use_cases.UpdateUserLastKnownLocationUseCase
+import javax.inject.Inject
 
-class LocationService : Service() {
+@AndroidEntryPoint
+class LocationService @Inject constructor(
+) : Service() {
+
+    var updateLocation: UpdateUserLastKnownLocationUseCase =
+        UpdateUserLastKnownLocationUseCase(LocationRepositoryImpl(FireStoreClientImpl()))
 
     private val serviceScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
     private lateinit var locationClient: LocationClient
@@ -27,8 +39,7 @@ class LocationService : Service() {
     override fun onCreate() {
         super.onCreate()
         locationClient = DefaultLocationClient(
-            applicationContext,
-            LocationServices.getFusedLocationProviderClient(applicationContext)
+            applicationContext, LocationServices.getFusedLocationProviderClient(applicationContext)
         )
     }
 
@@ -42,26 +53,24 @@ class LocationService : Service() {
 
     private fun start() {
         val notification = NotificationCompat.Builder(this, "location")
-            .setContentTitle("Looking for nearby cases...")
-            .setContentText("Location: null")
-            .setSmallIcon(R.drawable.ic_notifications)
-            .setOngoing(true)
+            .setContentTitle("Looking for nearby cases...").setContentText("Location: null")
+            .setSmallIcon(R.drawable.ic_notifications).setOngoing(true)
 
         val notificationManager =
             getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
-        locationClient
-            .getLocationUpdates(10000L)
-            .catch { e -> e.printStackTrace() }
+        locationClient.getLocationUpdates(10000L).catch { e -> e.printStackTrace() }
             .onEach { location ->
-                val lat = location.latitude.toString().takeLast(3)
-                val long = location.longitude.toString().takeLast(3)
+                val lat = location.latitude
+                val long = location.longitude
                 val updatedNotification = notification.setContentText(
                     "Location: ($lat, $long)"
                 )
+                FirebaseAuth.getInstance().currentUser?.let {
+                    updateLocation(it.uid, LatLng(lat, long))
+                }
                 notificationManager.notify(1, updatedNotification.build())
-            }
-            .launchIn(serviceScope)
+            }.launchIn(serviceScope)
 
         startForeground(1, notification.build())
     }

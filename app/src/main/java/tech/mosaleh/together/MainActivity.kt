@@ -46,16 +46,7 @@ class MainActivity : ComponentActivity() {
                 val navController = rememberNavController()
                 SetUpNavGraph(navController = navController)
             }
-            FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
-                if (!task.isSuccessful) {
-                    Log.w("FCM Token", "Fetching FCM registration token failed", task.exception)
-                    return@addOnCompleteListener
-                }
 
-                // Get the token and use it as desired
-                val token = task.result
-                Log.d("FCM Token", token ?: "Token is null")
-            }
         }
     }
 

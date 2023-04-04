@@ -1,0 +1,1195 @@
+[debug] [2023-04-04T22:13:55.566Z] ----------------------------------------------------------------------
+[debug] [2023-04-04T22:13:55.568Z] Command:       /usr/bin/node /usr/bin/firebase deploy --only functions
+[debug] [2023-04-04T22:13:55.569Z] CLI Version:   11.25.2
+[debug] [2023-04-04T22:13:55.569Z] Platform:      linux
+[debug] [2023-04-04T22:13:55.569Z] Node Version:  v19.8.1
+[debug] [2023-04-04T22:13:55.569Z] Time:          Wed Apr 05 2023 00:13:55 GMT+0200 (Eastern European Standard Time)
+[debug] [2023-04-04T22:13:55.569Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-04-04T22:13:55.646Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-04-04T22:13:55.646Z] > authorizing via signed-in user (mohamedsalehofficial@gmail.com)
+[debug] [2023-04-04T22:13:55.646Z] [iam] checking project together-f0f2c for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2023-04-04T22:13:55.649Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/together-f0f2c:testIamPermissions [none]
+[debug] [2023-04-04T22:13:55.649Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/together-f0f2c:testIamPermissions x-goog-quota-user=projects/together-f0f2c
+[debug] [2023-04-04T22:13:55.649Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/together-f0f2c:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2023-04-04T22:13:56.702Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/together-f0f2c:testIamPermissions 200
+[debug] [2023-04-04T22:13:56.703Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/together-f0f2c:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2023-04-04T22:13:56.704Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/together-f0f2c/serviceAccounts/together-f0f2c@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2023-04-04T22:13:56.704Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/together-f0f2c/serviceAccounts/together-f0f2c@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2023-04-04T22:13:57.597Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/together-f0f2c/serviceAccounts/together-f0f2c@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2023-04-04T22:13:57.597Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/together-f0f2c/serviceAccounts/together-f0f2c@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[info] 
+[info] === Deploying to 'together-f0f2c'...
+[info] 
+[info] i  deploying functions 
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint
+[info] ✔  functions: Finished running predeploy script. 
+[debug] [2023-04-04T22:13:58.938Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c [none]
+[debug] [2023-04-04T22:13:59.441Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c 200
+[debug] [2023-04-04T22:13:59.443Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c {"projectId":"together-f0f2c","projectNumber":"80841527552","displayName":"Together","name":"projects/together-f0f2c","resources":{"hostingSite":"together-f0f2c","realtimeDatabaseInstance":"together-f0f2c-default-rtdb","storageBucket":"together-f0f2c.appspot.com","locationId":"europe-west3"},"state":"ACTIVE","etag":"1_77c00981-9520-4e5e-8ace-64ddd87b3c81"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2023-04-04T22:13:59.456Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/cloudfunctions.googleapis.com [none]
+[debug] [2023-04-04T22:13:59.456Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/together-f0f2c
+[debug] [2023-04-04T22:13:59.462Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/runtimeconfig.googleapis.com [none]
+[debug] [2023-04-04T22:13:59.462Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/together-f0f2c
+[debug] [2023-04-04T22:13:59.465Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/cloudbuild.googleapis.com [none]
+[debug] [2023-04-04T22:13:59.465Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/cloudbuild.googleapis.com x-goog-quota-user=projects/together-f0f2c
+[debug] [2023-04-04T22:13:59.468Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/artifactregistry.googleapis.com [none]
+[debug] [2023-04-04T22:13:59.468Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/artifactregistry.googleapis.com x-goog-quota-user=projects/together-f0f2c
+[debug] [2023-04-04T22:14:00.520Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/cloudfunctions.googleapis.com 200
+[debug] [2023-04-04T22:14:00.521Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/cloudfunctions.googleapis.com [omitted]
+[info] ✔  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2023-04-04T22:14:00.522Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/runtimeconfig.googleapis.com 200
+[debug] [2023-04-04T22:14:00.523Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2023-04-04T22:14:00.566Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/artifactregistry.googleapis.com 200
+[debug] [2023-04-04T22:14:00.567Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/artifactregistry.googleapis.com [omitted]
+[info] ✔  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2023-04-04T22:14:00.572Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/cloudbuild.googleapis.com 200
+[debug] [2023-04-04T22:14:00.572Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/cloudbuild.googleapis.com [omitted]
+[info] ✔  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2023-04-04T22:14:00.574Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c/adminSdkConfig [none]
+[debug] [2023-04-04T22:14:00.850Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c/adminSdkConfig 200
+[debug] [2023-04-04T22:14:00.851Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c/adminSdkConfig {"projectId":"together-f0f2c","databaseURL":"https://together-f0f2c-default-rtdb.firebaseio.com","storageBucket":"together-f0f2c.appspot.com","locationId":"europe-west3"}
+[debug] [2023-04-04T22:14:00.853Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/together-f0f2c/configs [none]
+[debug] [2023-04-04T22:14:01.820Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/together-f0f2c/configs 200
+[debug] [2023-04-04T22:14:01.821Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/together-f0f2c/configs {}
+[debug] [2023-04-04T22:14:01.828Z] Validating nodejs source
+[debug] [2023-04-04T22:14:02.819Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^11.5.0",
+    "firebase-functions": "^4.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^3.0.0"
+  },
+  "private": true
+}
+[debug] [2023-04-04T22:14:02.819Z] Building nodejs source
+[debug] [2023-04-04T22:14:02.821Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-04-04T22:14:02.827Z] Found firebase-functions binary at '/home/mosaleh/AndroidStudioProjects/Together/functions/node_modules/.bin/firebase-functions'
+[debug] [2023-04-04T22:14:03.116Z] Serving at port 8759
+
+[debug] [2023-04-04T22:14:03.378Z] Got response from /__/functions.yaml {"endpoints":{"sendCaseNotification":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"eventTrigger":{"eventType":"providers/cloud.firestore/eventTypes/document.write","eventFilters":{"resource":"projects/together-f0f2c/databases/(default)/documents/cases/"},"retry":false},"labels":{},"entryPoint":"sendCaseNotification"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2023-04-04T22:14:03.385Z] shutdown requested via /__/quitquitquit
+
+[info] i  functions: preparing functions directory for uploading... 
+[info] i  functions: packaged /home/mosaleh/AndroidStudioProjects/Together/functions (141.8 KB) for uploading 
+[debug] [2023-04-04T22:14:03.442Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/-/functions [none]
+[debug] [2023-04-04T22:14:04.360Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/-/functions 200
+[debug] [2023-04-04T22:14:04.361Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/-/functions {"functions":[{"name":"projects/together-f0f2c/locations/us-central1/functions/onCreateCase","eventTrigger":{"eventType":"providers/google.firebase.database/eventTypes/ref.create","resource":"projects/_/instances/together-f0f2c-default-rtdb/refs/cases","service":"firebaseio.com","failurePolicy":{}},"status":"ACTIVE","entryPoint":"onCreateCase","timeout":"60s","availableMemoryMb":256,"serviceAccountEmail":"together-f0f2c@appspot.gserviceaccount.com","updateTime":"2023-04-02T09:50:11.777Z","versionId":"2","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"ed0b671fd650eb26cab6e8987853678f2b00689b"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-979323974809.us-central1.cloudfunctions.appspot.com/ee814e55-3f8f-493e-ac87-7c326e9cf8d4.zip","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"together-f0f2c\",\"databaseURL\":\"https://together-f0f2c-default-rtdb.firebaseio.com\",\"storageBucket\":\"together-f0f2c.appspot.com\",\"locationId\":\"europe-west3\"}","GCLOUD_PROJECT":"together-f0f2c","EVENTARC_CLOUD_EVENT_SOURCE":"projects/together-f0f2c/locations/us-central1/functions/onCreateCase"},"runtime":"nodejs16","maxInstances":3000,"ingressSettings":"ALLOW_ALL","buildId":"efef61f2-eada-4201-8c17-6f484bee8af2","buildName":"projects/80841527552/locations/us-central1/builds/efef61f2-eada-4201-8c17-6f484bee8af2","dockerRegistry":"ARTIFACT_REGISTRY"},{"name":"projects/together-f0f2c/locations/us-central1/functions/sendNotificationOnCreate","eventTrigger":{"eventType":"providers/google.firebase.database/eventTypes/ref.create","resource":"projects/_/instances/together-f0f2c-default-rtdb/refs/cases","service":"firebaseio.com","failurePolicy":{}},"status":"ACTIVE","entryPoint":"sendNotificationOnCreate","timeout":"60s","availableMemoryMb":256,"serviceAccountEmail":"together-f0f2c@appspot.gserviceaccount.com","updateTime":"2023-04-02T10:48:05.701Z","versionId":"4","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"00a16b9f5ceaa37e269bfd5a82aa4e61ae4711be"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-979323974809.us-central1.cloudfunctions.appspot.com/1ca0fc82-26ff-4ed3-90c5-6194bb704d00.zip","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"together-f0f2c\",\"databaseURL\":\"https://together-f0f2c-default-rtdb.firebaseio.com\",\"storageBucket\":\"together-f0f2c.appspot.com\",\"locationId\":\"europe-west3\"}","GCLOUD_PROJECT":"together-f0f2c","EVENTARC_CLOUD_EVENT_SOURCE":"projects/together-f0f2c/locations/us-central1/functions/sendNotificationOnCreate"},"runtime":"nodejs16","maxInstances":3000,"ingressSettings":"ALLOW_ALL","buildId":"dcae2991-7d98-4db8-a8c4-0e5aaf28c078","buildName":"projects/80841527552/locations/us-central1/builds/dcae2991-7d98-4db8-a8c4-0e5aaf28c078","dockerRegistry":"ARTIFACT_REGISTRY"}]}
+[debug] [2023-04-04T22:14:04.367Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/together-f0f2c/locations/-/functions filter=environment%3D%22GEN_2%22
+[debug] [2023-04-04T22:14:05.470Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/together-f0f2c/locations/-/functions 200
+[debug] [2023-04-04T22:14:05.470Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/together-f0f2c/locations/-/functions {}
+[debug] [2023-04-04T22:14:05.494Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c [none]
+[debug] [2023-04-04T22:14:05.784Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c 200
+[debug] [2023-04-04T22:14:05.784Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c {"projectId":"together-f0f2c","projectNumber":"80841527552","displayName":"Together","name":"projects/together-f0f2c","resources":{"hostingSite":"together-f0f2c","realtimeDatabaseInstance":"together-f0f2c-default-rtdb","storageBucket":"together-f0f2c.appspot.com","locationId":"europe-west3"},"state":"ACTIVE","etag":"1_77c00981-9520-4e5e-8ace-64ddd87b3c81"}
+[debug] [2023-04-04T22:14:05.790Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions:generateUploadUrl [none]
+[debug] [2023-04-04T22:14:05.790Z] >>> [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions:generateUploadUrl {}
+[debug] [2023-04-04T22:14:06.397Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions:generateUploadUrl 200
+[debug] [2023-04-04T22:14:06.397Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions:generateUploadUrl {"uploadUrl":"https://storage.googleapis.com/uploads-979323974809.us-central1.cloudfunctions.appspot.com/64510339-398a-43d1-86a0-9a9c0b1bd6c7.zip?GoogleAccessId=service-80841527552@gcf-admin-robot.iam.gserviceaccount.com&Expires=1680648246&Signature=O9hEtZmE6DEv9psZsZeWgmFm%2FBhzlQTxWZhSRzb0eI%2FXqYexI29LX1ueW8U4UxiRFhiwT0uZd2Pz5osNoxc9r%2F4VOPFBq7P8TjY6DAPbapdlyoMqozP4%2FKR19MEMSs8KAOAqc980XHXftpJrnbvbhbIXuKKqMhpip79RJihGuMbWcNH3lm7HK48iQaQAwkg8A1v7%2FXtz6TEOXtenBMV3RL41OOMQqmzkAN9jZ%2F%2B1Lnb3rbB4UnHqvCq4agz0V3pbyxdXiZ6VantVovxGcJTvLRO5OHgGGOqzBUC6SVJ55t9eyetGyvD6yWebtWyv52%2Fzlstw0mBNu2BbCNABLUesOQ%3D%3D"}
+[debug] [2023-04-04T22:14:06.400Z] >>> [apiv2][query] PUT https://storage.googleapis.com/uploads-979323974809.us-central1.cloudfunctions.appspot.com/64510339-398a-43d1-86a0-9a9c0b1bd6c7.zip GoogleAccessId=service-80841527552%40gcf-admin-robot.iam.gserviceaccount.com&Expires=1680648246&Signature=O9hEtZmE6DEv9psZsZeWgmFm%2FBhzlQTxWZhSRzb0eI%2FXqYexI29LX1ueW8U4UxiRFhiwT0uZd2Pz5osNoxc9r%2F4VOPFBq7P8TjY6DAPbapdlyoMqozP4%2FKR19MEMSs8KAOAqc980XHXftpJrnbvbhbIXuKKqMhpip79RJihGuMbWcNH3lm7HK48iQaQAwkg8A1v7%2FXtz6TEOXtenBMV3RL41OOMQqmzkAN9jZ%2F%2B1Lnb3rbB4UnHqvCq4agz0V3pbyxdXiZ6VantVovxGcJTvLRO5OHgGGOqzBUC6SVJ55t9eyetGyvD6yWebtWyv52%2Fzlstw0mBNu2BbCNABLUesOQ%3D%3D
+[debug] [2023-04-04T22:14:06.401Z] >>> [apiv2][body] PUT https://storage.googleapis.com/uploads-979323974809.us-central1.cloudfunctions.appspot.com/64510339-398a-43d1-86a0-9a9c0b1bd6c7.zip [stream]
+[debug] [2023-04-04T22:14:08.242Z] <<< [apiv2][status] PUT https://storage.googleapis.com/uploads-979323974809.us-central1.cloudfunctions.appspot.com/64510339-398a-43d1-86a0-9a9c0b1bd6c7.zip 200
+[debug] [2023-04-04T22:14:08.242Z] <<< [apiv2][body] PUT https://storage.googleapis.com/uploads-979323974809.us-central1.cloudfunctions.appspot.com/64510339-398a-43d1-86a0-9a9c0b1bd6c7.zip [omitted]
+[info] ✔  functions: functions folder uploaded successfully 
+[info] 
+The following functions are found in your project but do not exist in your local source code:
+	onCreateCase(us-central1)
+	sendNotificationOnCreate(us-central1)
+
+If you are renaming a function or changing its region, it is recommended that you create the new function first before deleting the old one to prevent event loss. For more info, visit https://firebase.google.com/docs/functions/manage-functions#modify
+
+[info] i  functions: creating Node.js 16 function sendCaseNotification(us-central1)... 
+[debug] [2023-04-04T22:14:11.901Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions [none]
+[debug] [2023-04-04T22:14:11.901Z] >>> [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions {"name":"projects/together-f0f2c/locations/us-central1/functions/sendCaseNotification","sourceUploadUrl":"https://storage.googleapis.com/uploads-979323974809.us-central1.cloudfunctions.appspot.com/64510339-398a-43d1-86a0-9a9c0b1bd6c7.zip?GoogleAccessId=service-80841527552@gcf-admin-robot.iam.gserviceaccount.com&Expires=1680648246&Signature=O9hEtZmE6DEv9psZsZeWgmFm%2FBhzlQTxWZhSRzb0eI%2FXqYexI29LX1ueW8U4UxiRFhiwT0uZd2Pz5osNoxc9r%2F4VOPFBq7P8TjY6DAPbapdlyoMqozP4%2FKR19MEMSs8KAOAqc980XHXftpJrnbvbhbIXuKKqMhpip79RJihGuMbWcNH3lm7HK48iQaQAwkg8A1v7%2FXtz6TEOXtenBMV3RL41OOMQqmzkAN9jZ%2F%2B1Lnb3rbB4UnHqvCq4agz0V3pbyxdXiZ6VantVovxGcJTvLRO5OHgGGOqzBUC6SVJ55t9eyetGyvD6yWebtWyv52%2Fzlstw0mBNu2BbCNABLUesOQ%3D%3D","entryPoint":"sendCaseNotification","runtime":"nodejs16","dockerRegistry":"ARTIFACT_REGISTRY","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"f18d39e64707a720e0e81b03090ee619764e338f"},"eventTrigger":{"eventType":"providers/cloud.firestore/eventTypes/document.write","resource":"projects/together-f0f2c/databases/(default)/documents/cases/"},"minInstances":null,"maxInstances":null,"ingressSettings":null,"environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"together-f0f2c\",\"databaseURL\":\"https://together-f0f2c-default-rtdb.firebaseio.com\",\"storageBucket\":\"together-f0f2c.appspot.com\",\"locationId\":\"europe-west3\"}","GCLOUD_PROJECT":"together-f0f2c","EVENTARC_CLOUD_EVENT_SOURCE":"projects/together-f0f2c/locations/us-central1/functions/sendCaseNotification"},"serviceAccountEmail":null,"availableMemoryMb":null,"timeout":null,"vpcConnector":null,"vpcConnectorEgressSettings":null}
+[debug] [2023-04-04T22:14:12.473Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions 400
+[debug] [2023-04-04T22:14:12.475Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions {"error":{"code":400,"message":"The request has errors","status":"INVALID_ARGUMENT","details":[{"@type":"type.googleapis.com/google.rpc.BadRequest","fieldViolations":[{"field":"event_trigger","description":"Expected value cases/ to match regular expression [^/]+/[^/]+(/[^/]+/[^/]+)*"}]}]}}
+[warn] ⚠  functions: failed to create function projects/together-f0f2c/locations/us-central1/functions/sendCaseNotification 
+[error] Failed to create function projects/together-f0f2c/locations/us-central1/functions/sendCaseNotification
+[debug] [2023-04-04T22:14:12.488Z] Total Function Deployment time: 588
+[debug] [2023-04-04T22:14:12.488Z] 1 Functions Deployed
+[debug] [2023-04-04T22:14:12.488Z] 1 Functions Errored
+[debug] [2023-04-04T22:14:12.488Z] 0 Function Deployments Aborted
+[debug] [2023-04-04T22:14:12.488Z] Average Function Deployment time: 585
+[info] 
+[info] Functions deploy had errors with the following functions:
+	sendCaseNotification(us-central1)
+[info] i  functions: cleaning up build files... 
+[debug] [2023-04-04T22:14:12.786Z] >>> [apiv2][query] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/together-f0f2c/locations/us-central1/repositories/gcf-artifacts/packages/send_case_notification [none]
+[debug] [2023-04-04T22:14:12.791Z] >>> [apiv2][query] GET https://us.gcr.io/v2/together-f0f2c/gcf/us-central1/tags/list [none]
+[debug] [2023-04-04T22:14:13.255Z] <<< [apiv2][status] GET https://us.gcr.io/v2/together-f0f2c/gcf/us-central1/tags/list 200
+[debug] [2023-04-04T22:14:13.256Z] <<< [apiv2][body] GET https://us.gcr.io/v2/together-f0f2c/gcf/us-central1/tags/list {"child":[],"manifest":{},"name":"together-f0f2c/gcf/us-central1","tags":[]}
+[debug] [2023-04-04T22:14:13.257Z] Could not find image for function projects/together-f0f2c/locations/us-central1/functions/sendCaseNotification
+[debug] [2023-04-04T22:14:13.768Z] <<< [apiv2][status] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/together-f0f2c/locations/us-central1/repositories/gcf-artifacts/packages/send_case_notification 404
+[debug] [2023-04-04T22:14:13.768Z] <<< [apiv2][body] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/together-f0f2c/locations/us-central1/repositories/gcf-artifacts/packages/send_case_notification {"error":{"code":404,"message":"Package \"projects/together-f0f2c/locations/us-central1/repositories/gcf-artifacts/packages/send_case_notification\" was not found.","status":"NOT_FOUND"}}
+[debug] [2023-04-04T22:14:13.769Z] Functions deploy failed.
+[debug] [2023-04-04T22:14:13.770Z] {
+  "endpoint": {
+    "id": "sendCaseNotification",
+    "project": "together-f0f2c",
+    "region": "us-central1",
+    "entryPoint": "sendCaseNotification",
+    "platform": "gcfv1",
+    "runtime": "nodejs16",
+    "eventTrigger": {
+      "eventType": "providers/cloud.firestore/eventTypes/document.write",
+      "retry": false,
+      "eventFilters": {
+        "resource": "projects/together-f0f2c/databases/(default)/documents/cases/"
+      }
+    },
+    "labels": {
+      "deployment-tool": "cli-firebase"
+    },
+    "serviceAccount": null,
+    "ingressSettings": null,
+    "availableMemoryMb": null,
+    "timeoutSeconds": null,
+    "maxInstances": null,
+    "minInstances": null,
+    "vpc": null,
+    "environmentVariables": {
+      "FIREBASE_CONFIG": "{\"projectId\":\"together-f0f2c\",\"databaseURL\":\"https://together-f0f2c-default-rtdb.firebaseio.com\",\"storageBucket\":\"together-f0f2c.appspot.com\",\"locationId\":\"europe-west3\"}",
+      "GCLOUD_PROJECT": "together-f0f2c",
+      "EVENTARC_CLOUD_EVENT_SOURCE": "projects/together-f0f2c/locations/us-central1/functions/sendCaseNotification"
+    },
+    "codebase": "default",
+    "targetedByOnly": false,
+    "hash": "f18d39e64707a720e0e81b03090ee619764e338f"
+  },
+  "op": "create",
+  "original": {
+    "name": "FirebaseError",
+    "children": [],
+    "context": {
+      "function": "projects/together-f0f2c/locations/us-central1/functions/sendCaseNotification"
+    },
+    "exit": 1,
+    "message": "Failed to create function projects/together-f0f2c/locations/us-central1/functions/sendCaseNotification",
+    "original": {
+      "name": "FirebaseError",
+      "children": [],
+      "context": {
+        "body": {
+          "error": {
+            "code": 400,
+            "message": "The request has errors",
+            "status": "INVALID_ARGUMENT",
+            "details": [
+              {
+                "@type": "type.googleapis.com/google.rpc.BadRequest",
+                "fieldViolations": [
+                  {
+                    "field": "event_trigger",
+                    "description": "Expected value cases/ to match regular expression [^/]+/[^/]+(/[^/]+/[^/]+)*"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "response": {
+          "statusCode": 400
+        }
+      },
+      "exit": 1,
+      "message": "HTTP Error: 400, The request has errors",
+      "status": 400
+    },
+    "status": 400
+  }
+}
+[debug] [2023-04-04T22:14:13.862Z] Error: Failed to create function sendCaseNotification in region us-central1
+    at /usr/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:48:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Fabricator.createV1Function (/usr/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:177:32)
+    at async Fabricator.createEndpoint (/usr/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:129:13)
+    at async handle (/usr/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:85:17)
+[error] 
+[error] Error: There was an error deploying functions
+[debug] [2023-04-04T22:14:27.638Z] ----------------------------------------------------------------------
+[debug] [2023-04-04T22:14:27.640Z] Command:       /usr/bin/node /usr/bin/firebase deploy --only functions
+[debug] [2023-04-04T22:14:27.640Z] CLI Version:   11.25.2
+[debug] [2023-04-04T22:14:27.640Z] Platform:      linux
+[debug] [2023-04-04T22:14:27.641Z] Node Version:  v19.8.1
+[debug] [2023-04-04T22:14:27.641Z] Time:          Wed Apr 05 2023 00:14:27 GMT+0200 (Eastern European Standard Time)
+[debug] [2023-04-04T22:14:27.641Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-04-04T22:14:27.716Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-04-04T22:14:27.716Z] > authorizing via signed-in user (mohamedsalehofficial@gmail.com)
+[debug] [2023-04-04T22:14:27.717Z] [iam] checking project together-f0f2c for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2023-04-04T22:14:27.719Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/together-f0f2c:testIamPermissions [none]
+[debug] [2023-04-04T22:14:27.719Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/together-f0f2c:testIamPermissions x-goog-quota-user=projects/together-f0f2c
+[debug] [2023-04-04T22:14:27.719Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/together-f0f2c:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2023-04-04T22:14:28.850Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/together-f0f2c:testIamPermissions 200
+[debug] [2023-04-04T22:14:28.851Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/together-f0f2c:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2023-04-04T22:14:28.852Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/together-f0f2c/serviceAccounts/together-f0f2c@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2023-04-04T22:14:28.852Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/together-f0f2c/serviceAccounts/together-f0f2c@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2023-04-04T22:14:29.803Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/together-f0f2c/serviceAccounts/together-f0f2c@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2023-04-04T22:14:29.803Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/together-f0f2c/serviceAccounts/together-f0f2c@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[info] 
+[info] === Deploying to 'together-f0f2c'...
+[info] 
+[info] i  deploying functions 
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint
+[info] ✔  functions: Finished running predeploy script. 
+[debug] [2023-04-04T22:14:31.285Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c [none]
+[debug] [2023-04-04T22:14:31.800Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c 200
+[debug] [2023-04-04T22:14:31.801Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c {"projectId":"together-f0f2c","projectNumber":"80841527552","displayName":"Together","name":"projects/together-f0f2c","resources":{"hostingSite":"together-f0f2c","realtimeDatabaseInstance":"together-f0f2c-default-rtdb","storageBucket":"together-f0f2c.appspot.com","locationId":"europe-west3"},"state":"ACTIVE","etag":"1_77c00981-9520-4e5e-8ace-64ddd87b3c81"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2023-04-04T22:14:31.806Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/cloudfunctions.googleapis.com [none]
+[debug] [2023-04-04T22:14:31.806Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/together-f0f2c
+[debug] [2023-04-04T22:14:31.808Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/runtimeconfig.googleapis.com [none]
+[debug] [2023-04-04T22:14:31.808Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/together-f0f2c
+[debug] [2023-04-04T22:14:31.810Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/cloudbuild.googleapis.com [none]
+[debug] [2023-04-04T22:14:31.810Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/cloudbuild.googleapis.com x-goog-quota-user=projects/together-f0f2c
+[debug] [2023-04-04T22:14:31.812Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/artifactregistry.googleapis.com [none]
+[debug] [2023-04-04T22:14:31.812Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/artifactregistry.googleapis.com x-goog-quota-user=projects/together-f0f2c
+[debug] [2023-04-04T22:14:32.890Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/runtimeconfig.googleapis.com 200
+[debug] [2023-04-04T22:14:32.890Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2023-04-04T22:14:32.901Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/cloudfunctions.googleapis.com 200
+[debug] [2023-04-04T22:14:32.901Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/cloudfunctions.googleapis.com [omitted]
+[info] ✔  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2023-04-04T22:14:32.911Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/cloudbuild.googleapis.com 200
+[debug] [2023-04-04T22:14:32.912Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/cloudbuild.googleapis.com [omitted]
+[info] ✔  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2023-04-04T22:14:32.914Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/artifactregistry.googleapis.com 200
+[debug] [2023-04-04T22:14:32.914Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/artifactregistry.googleapis.com [omitted]
+[info] ✔  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2023-04-04T22:14:32.916Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c/adminSdkConfig [none]
+[debug] [2023-04-04T22:14:33.214Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c/adminSdkConfig 200
+[debug] [2023-04-04T22:14:33.215Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c/adminSdkConfig {"projectId":"together-f0f2c","databaseURL":"https://together-f0f2c-default-rtdb.firebaseio.com","storageBucket":"together-f0f2c.appspot.com","locationId":"europe-west3"}
+[debug] [2023-04-04T22:14:33.217Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/together-f0f2c/configs [none]
+[debug] [2023-04-04T22:14:34.509Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/together-f0f2c/configs 200
+[debug] [2023-04-04T22:14:34.510Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/together-f0f2c/configs {}
+[debug] [2023-04-04T22:14:34.517Z] Validating nodejs source
+[debug] [2023-04-04T22:14:36.198Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^11.5.0",
+    "firebase-functions": "^4.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^3.0.0"
+  },
+  "private": true
+}
+[debug] [2023-04-04T22:14:36.198Z] Building nodejs source
+[debug] [2023-04-04T22:14:36.200Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-04-04T22:14:36.205Z] Found firebase-functions binary at '/home/mosaleh/AndroidStudioProjects/Together/functions/node_modules/.bin/firebase-functions'
+[debug] [2023-04-04T22:14:36.464Z] Serving at port 8403
+
+[debug] [2023-04-04T22:14:36.759Z] Got response from /__/functions.yaml {"endpoints":{"sendCaseNotification":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"eventTrigger":{"eventType":"providers/cloud.firestore/eventTypes/document.write","eventFilters":{"resource":"projects/together-f0f2c/databases/(default)/documents/cases/"},"retry":false},"labels":{},"entryPoint":"sendCaseNotification"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2023-04-04T22:14:36.767Z] shutdown requested via /__/quitquitquit
+
+[info] i  functions: preparing functions directory for uploading... 
+[info] i  functions: packaged /home/mosaleh/AndroidStudioProjects/Together/functions (141.8 KB) for uploading 
+[debug] [2023-04-04T22:14:36.823Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/-/functions [none]
+[debug] [2023-04-04T22:14:37.493Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/-/functions 200
+[debug] [2023-04-04T22:14:37.494Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/-/functions {"functions":[{"name":"projects/together-f0f2c/locations/us-central1/functions/onCreateCase","eventTrigger":{"eventType":"providers/google.firebase.database/eventTypes/ref.create","resource":"projects/_/instances/together-f0f2c-default-rtdb/refs/cases","service":"firebaseio.com","failurePolicy":{}},"status":"ACTIVE","entryPoint":"onCreateCase","timeout":"60s","availableMemoryMb":256,"serviceAccountEmail":"together-f0f2c@appspot.gserviceaccount.com","updateTime":"2023-04-02T09:50:11.777Z","versionId":"2","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"ed0b671fd650eb26cab6e8987853678f2b00689b"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-979323974809.us-central1.cloudfunctions.appspot.com/ee814e55-3f8f-493e-ac87-7c326e9cf8d4.zip","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"together-f0f2c\",\"databaseURL\":\"https://together-f0f2c-default-rtdb.firebaseio.com\",\"storageBucket\":\"together-f0f2c.appspot.com\",\"locationId\":\"europe-west3\"}","GCLOUD_PROJECT":"together-f0f2c","EVENTARC_CLOUD_EVENT_SOURCE":"projects/together-f0f2c/locations/us-central1/functions/onCreateCase"},"runtime":"nodejs16","maxInstances":3000,"ingressSettings":"ALLOW_ALL","buildId":"efef61f2-eada-4201-8c17-6f484bee8af2","buildName":"projects/80841527552/locations/us-central1/builds/efef61f2-eada-4201-8c17-6f484bee8af2","dockerRegistry":"ARTIFACT_REGISTRY"},{"name":"projects/together-f0f2c/locations/us-central1/functions/sendNotificationOnCreate","eventTrigger":{"eventType":"providers/google.firebase.database/eventTypes/ref.create","resource":"projects/_/instances/together-f0f2c-default-rtdb/refs/cases","service":"firebaseio.com","failurePolicy":{}},"status":"ACTIVE","entryPoint":"sendNotificationOnCreate","timeout":"60s","availableMemoryMb":256,"serviceAccountEmail":"together-f0f2c@appspot.gserviceaccount.com","updateTime":"2023-04-02T10:48:05.701Z","versionId":"4","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"00a16b9f5ceaa37e269bfd5a82aa4e61ae4711be"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-979323974809.us-central1.cloudfunctions.appspot.com/1ca0fc82-26ff-4ed3-90c5-6194bb704d00.zip","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"together-f0f2c\",\"databaseURL\":\"https://together-f0f2c-default-rtdb.firebaseio.com\",\"storageBucket\":\"together-f0f2c.appspot.com\",\"locationId\":\"europe-west3\"}","GCLOUD_PROJECT":"together-f0f2c","EVENTARC_CLOUD_EVENT_SOURCE":"projects/together-f0f2c/locations/us-central1/functions/sendNotificationOnCreate"},"runtime":"nodejs16","maxInstances":3000,"ingressSettings":"ALLOW_ALL","buildId":"dcae2991-7d98-4db8-a8c4-0e5aaf28c078","buildName":"projects/80841527552/locations/us-central1/builds/dcae2991-7d98-4db8-a8c4-0e5aaf28c078","dockerRegistry":"ARTIFACT_REGISTRY"}]}
+[debug] [2023-04-04T22:14:37.500Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/together-f0f2c/locations/-/functions filter=environment%3D%22GEN_2%22
+[debug] [2023-04-04T22:14:38.498Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/together-f0f2c/locations/-/functions 200
+[debug] [2023-04-04T22:14:38.498Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/together-f0f2c/locations/-/functions {}
+[debug] [2023-04-04T22:14:38.507Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c [none]
+[debug] [2023-04-04T22:14:38.909Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c 200
+[debug] [2023-04-04T22:14:38.910Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c {"projectId":"together-f0f2c","projectNumber":"80841527552","displayName":"Together","name":"projects/together-f0f2c","resources":{"hostingSite":"together-f0f2c","realtimeDatabaseInstance":"together-f0f2c-default-rtdb","storageBucket":"together-f0f2c.appspot.com","locationId":"europe-west3"},"state":"ACTIVE","etag":"1_77c00981-9520-4e5e-8ace-64ddd87b3c81"}
+[debug] [2023-04-04T22:14:38.917Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions:generateUploadUrl [none]
+[debug] [2023-04-04T22:14:38.917Z] >>> [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions:generateUploadUrl {}
+[debug] [2023-04-04T22:14:39.517Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions:generateUploadUrl 200
+[debug] [2023-04-04T22:14:39.517Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions:generateUploadUrl {"uploadUrl":"https://storage.googleapis.com/uploads-979323974809.us-central1.cloudfunctions.appspot.com/7cf146e0-a8c1-4075-9bad-53942884cfbe.zip?GoogleAccessId=service-80841527552@gcf-admin-robot.iam.gserviceaccount.com&Expires=1680648279&Signature=etj6dcfvtrb3V7sAwteEv%2B1x4YT0GxjvwOjYPQL1B8P1iQWwfBUKvn6qOQh2EQ09fneJRX9H9fdn5vO81JBONMMISHzFGsO6OZd%2Fh78yyhy82xV83g88O7wMtZhbDZ9yYJQOWpT1JhV3DX3acpzCLZR1tJyIROJadzjIMlRsNUzwNn18Y3ZGtKUePoSlwpHWQsaZXoffFZxZjUn1BiMIuKgCvDKsrdIDjrh7daRTgeBMUyW5QhhUUEPSEnVKMIUvqXkb5foOnaMaDQ%2FsCyQiGWZxIO1PYpAuVwWKMKOzHpsK7Sdx0tsyYjVd3%2BJRZvuvJMoUya3ijvmtSZTKcrkMLg%3D%3D"}
+[debug] [2023-04-04T22:14:39.521Z] >>> [apiv2][query] PUT https://storage.googleapis.com/uploads-979323974809.us-central1.cloudfunctions.appspot.com/7cf146e0-a8c1-4075-9bad-53942884cfbe.zip GoogleAccessId=service-80841527552%40gcf-admin-robot.iam.gserviceaccount.com&Expires=1680648279&Signature=etj6dcfvtrb3V7sAwteEv%2B1x4YT0GxjvwOjYPQL1B8P1iQWwfBUKvn6qOQh2EQ09fneJRX9H9fdn5vO81JBONMMISHzFGsO6OZd%2Fh78yyhy82xV83g88O7wMtZhbDZ9yYJQOWpT1JhV3DX3acpzCLZR1tJyIROJadzjIMlRsNUzwNn18Y3ZGtKUePoSlwpHWQsaZXoffFZxZjUn1BiMIuKgCvDKsrdIDjrh7daRTgeBMUyW5QhhUUEPSEnVKMIUvqXkb5foOnaMaDQ%2FsCyQiGWZxIO1PYpAuVwWKMKOzHpsK7Sdx0tsyYjVd3%2BJRZvuvJMoUya3ijvmtSZTKcrkMLg%3D%3D
+[debug] [2023-04-04T22:14:39.521Z] >>> [apiv2][body] PUT https://storage.googleapis.com/uploads-979323974809.us-central1.cloudfunctions.appspot.com/7cf146e0-a8c1-4075-9bad-53942884cfbe.zip [stream]
+[debug] [2023-04-04T22:14:41.525Z] <<< [apiv2][status] PUT https://storage.googleapis.com/uploads-979323974809.us-central1.cloudfunctions.appspot.com/7cf146e0-a8c1-4075-9bad-53942884cfbe.zip 200
+[debug] [2023-04-04T22:14:41.525Z] <<< [apiv2][body] PUT https://storage.googleapis.com/uploads-979323974809.us-central1.cloudfunctions.appspot.com/7cf146e0-a8c1-4075-9bad-53942884cfbe.zip [omitted]
+[info] ✔  functions: functions folder uploaded successfully 
+[info] 
+The following functions are found in your project but do not exist in your local source code:
+	onCreateCase(us-central1)
+	sendNotificationOnCreate(us-central1)
+
+If you are renaming a function or changing its region, it is recommended that you create the new function first before deleting the old one to prevent event loss. For more info, visit https://firebase.google.com/docs/functions/manage-functions#modify
+
+[info] i  functions: creating Node.js 16 function sendCaseNotification(us-central1)... 
+[info] i  functions: deleting Node.js 16 function onCreateCase(us-central1)... 
+[info] i  functions: deleting Node.js 16 function sendNotificationOnCreate(us-central1)... 
+[debug] [2023-04-04T22:14:52.851Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions [none]
+[debug] [2023-04-04T22:14:52.852Z] >>> [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions {"name":"projects/together-f0f2c/locations/us-central1/functions/sendCaseNotification","sourceUploadUrl":"https://storage.googleapis.com/uploads-979323974809.us-central1.cloudfunctions.appspot.com/7cf146e0-a8c1-4075-9bad-53942884cfbe.zip?GoogleAccessId=service-80841527552@gcf-admin-robot.iam.gserviceaccount.com&Expires=1680648279&Signature=etj6dcfvtrb3V7sAwteEv%2B1x4YT0GxjvwOjYPQL1B8P1iQWwfBUKvn6qOQh2EQ09fneJRX9H9fdn5vO81JBONMMISHzFGsO6OZd%2Fh78yyhy82xV83g88O7wMtZhbDZ9yYJQOWpT1JhV3DX3acpzCLZR1tJyIROJadzjIMlRsNUzwNn18Y3ZGtKUePoSlwpHWQsaZXoffFZxZjUn1BiMIuKgCvDKsrdIDjrh7daRTgeBMUyW5QhhUUEPSEnVKMIUvqXkb5foOnaMaDQ%2FsCyQiGWZxIO1PYpAuVwWKMKOzHpsK7Sdx0tsyYjVd3%2BJRZvuvJMoUya3ijvmtSZTKcrkMLg%3D%3D","entryPoint":"sendCaseNotification","runtime":"nodejs16","dockerRegistry":"ARTIFACT_REGISTRY","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"f18d39e64707a720e0e81b03090ee619764e338f"},"eventTrigger":{"eventType":"providers/cloud.firestore/eventTypes/document.write","resource":"projects/together-f0f2c/databases/(default)/documents/cases/"},"minInstances":null,"maxInstances":null,"ingressSettings":null,"environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"together-f0f2c\",\"databaseURL\":\"https://together-f0f2c-default-rtdb.firebaseio.com\",\"storageBucket\":\"together-f0f2c.appspot.com\",\"locationId\":\"europe-west3\"}","GCLOUD_PROJECT":"together-f0f2c","EVENTARC_CLOUD_EVENT_SOURCE":"projects/together-f0f2c/locations/us-central1/functions/sendCaseNotification"},"serviceAccountEmail":null,"availableMemoryMb":null,"timeout":null,"vpcConnector":null,"vpcConnectorEgressSettings":null}
+[debug] [2023-04-04T22:14:52.857Z] >>> [apiv2][query] DELETE https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions/onCreateCase [none]
+[debug] [2023-04-04T22:14:52.861Z] >>> [apiv2][query] DELETE https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions/sendNotificationOnCreate [none]
+[debug] [2023-04-04T22:14:53.404Z] <<< [apiv2][status] DELETE https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions/onCreateCase 200
+[debug] [2023-04-04T22:14:53.405Z] <<< [apiv2][body] DELETE https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions/onCreateCase {"name":"operations/dG9nZXRoZXItZjBmMmMvdXMtY2VudHJhbDEvb25DcmVhdGVDYXNlL21nOUZkQlVKa2F3","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/together-f0f2c/locations/us-central1/functions/onCreateCase","type":"DELETE_FUNCTION","request":{"@type":"type.googleapis.com/google.protobuf.Empty"},"updateTime":"2023-04-04T22:14:53Z"}}
+[debug] [2023-04-04T22:14:53.409Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/operations/dG9nZXRoZXItZjBmMmMvdXMtY2VudHJhbDEvb25DcmVhdGVDYXNlL21nOUZkQlVKa2F3 [none]
+[debug] [2023-04-04T22:14:53.422Z] <<< [apiv2][status] DELETE https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions/sendNotificationOnCreate 200
+[debug] [2023-04-04T22:14:53.422Z] <<< [apiv2][body] DELETE https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions/sendNotificationOnCreate {"name":"operations/dG9nZXRoZXItZjBmMmMvdXMtY2VudHJhbDEvc2VuZE5vdGlmaWNhdGlvbk9uQ3JlYXRlL2pQVi0ya3BPZUdj","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/together-f0f2c/locations/us-central1/functions/sendNotificationOnCreate","type":"DELETE_FUNCTION","request":{"@type":"type.googleapis.com/google.protobuf.Empty"},"updateTime":"2023-04-04T22:14:53Z"}}
+[debug] [2023-04-04T22:14:53.424Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/operations/dG9nZXRoZXItZjBmMmMvdXMtY2VudHJhbDEvc2VuZE5vdGlmaWNhdGlvbk9uQ3JlYXRlL2pQVi0ya3BPZUdj [none]
+[debug] [2023-04-04T22:14:53.443Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions 400
+[debug] [2023-04-04T22:14:53.443Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions {"error":{"code":400,"message":"The request has errors","status":"INVALID_ARGUMENT","details":[{"@type":"type.googleapis.com/google.rpc.BadRequest","fieldViolations":[{"field":"event_trigger","description":"Expected value cases/ to match regular expression [^/]+/[^/]+(/[^/]+/[^/]+)*"}]}]}}
+[warn] ⚠  functions: failed to create function projects/together-f0f2c/locations/us-central1/functions/sendCaseNotification 
+[error] Failed to create function projects/together-f0f2c/locations/us-central1/functions/sendCaseNotification
+[debug] [2023-04-04T22:14:53.712Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/operations/dG9nZXRoZXItZjBmMmMvdXMtY2VudHJhbDEvb25DcmVhdGVDYXNlL21nOUZkQlVKa2F3 200
+[debug] [2023-04-04T22:14:53.712Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/operations/dG9nZXRoZXItZjBmMmMvdXMtY2VudHJhbDEvb25DcmVhdGVDYXNlL21nOUZkQlVKa2F3 {"name":"operations/dG9nZXRoZXItZjBmMmMvdXMtY2VudHJhbDEvb25DcmVhdGVDYXNlL21nOUZkQlVKa2F3","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/together-f0f2c/locations/us-central1/functions/onCreateCase","type":"DELETE_FUNCTION","request":{"@type":"type.googleapis.com/google.protobuf.Empty"},"updateTime":"2023-04-04T22:14:53Z"}}
+[debug] [2023-04-04T22:14:53.715Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/operations/dG9nZXRoZXItZjBmMmMvdXMtY2VudHJhbDEvc2VuZE5vdGlmaWNhdGlvbk9uQ3JlYXRlL2pQVi0ya3BPZUdj 200
+[debug] [2023-04-04T22:14:53.716Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/operations/dG9nZXRoZXItZjBmMmMvdXMtY2VudHJhbDEvc2VuZE5vdGlmaWNhdGlvbk9uQ3JlYXRlL2pQVi0ya3BPZUdj {"name":"operations/dG9nZXRoZXItZjBmMmMvdXMtY2VudHJhbDEvc2VuZE5vdGlmaWNhdGlvbk9uQ3JlYXRlL2pQVi0ya3BPZUdj","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/together-f0f2c/locations/us-central1/functions/sendNotificationOnCreate","type":"DELETE_FUNCTION","request":{"@type":"type.googleapis.com/google.protobuf.Empty"},"updateTime":"2023-04-04T22:14:53Z"}}
+[debug] [2023-04-04T22:14:54.214Z] [delete-default-us-central1-onCreateCase] Retrying task index 0
+[debug] [2023-04-04T22:14:54.215Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/operations/dG9nZXRoZXItZjBmMmMvdXMtY2VudHJhbDEvb25DcmVhdGVDYXNlL21nOUZkQlVKa2F3 [none]
+[debug] [2023-04-04T22:14:54.217Z] [delete-default-us-central1-sendNotificationOnCreate] Retrying task index 0
+[debug] [2023-04-04T22:14:54.218Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/operations/dG9nZXRoZXItZjBmMmMvdXMtY2VudHJhbDEvc2VuZE5vdGlmaWNhdGlvbk9uQ3JlYXRlL2pQVi0ya3BPZUdj [none]
+[debug] [2023-04-04T22:14:54.465Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/operations/dG9nZXRoZXItZjBmMmMvdXMtY2VudHJhbDEvb25DcmVhdGVDYXNlL21nOUZkQlVKa2F3 200
+[debug] [2023-04-04T22:14:54.466Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/operations/dG9nZXRoZXItZjBmMmMvdXMtY2VudHJhbDEvb25DcmVhdGVDYXNlL21nOUZkQlVKa2F3 {"name":"operations/dG9nZXRoZXItZjBmMmMvdXMtY2VudHJhbDEvb25DcmVhdGVDYXNlL21nOUZkQlVKa2F3","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/together-f0f2c/locations/us-central1/functions/onCreateCase","type":"DELETE_FUNCTION","request":{"@type":"type.googleapis.com/google.protobuf.Empty"},"updateTime":"2023-04-04T22:14:53Z"}}
+[debug] [2023-04-04T22:14:54.467Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/operations/dG9nZXRoZXItZjBmMmMvdXMtY2VudHJhbDEvc2VuZE5vdGlmaWNhdGlvbk9uQ3JlYXRlL2pQVi0ya3BPZUdj 200
+[debug] [2023-04-04T22:14:54.468Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/operations/dG9nZXRoZXItZjBmMmMvdXMtY2VudHJhbDEvc2VuZE5vdGlmaWNhdGlvbk9uQ3JlYXRlL2pQVi0ya3BPZUdj {"name":"operations/dG9nZXRoZXItZjBmMmMvdXMtY2VudHJhbDEvc2VuZE5vdGlmaWNhdGlvbk9uQ3JlYXRlL2pQVi0ya3BPZUdj","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/together-f0f2c/locations/us-central1/functions/sendNotificationOnCreate","type":"DELETE_FUNCTION","request":{"@type":"type.googleapis.com/google.protobuf.Empty"},"updateTime":"2023-04-04T22:14:53Z"}}
+[debug] [2023-04-04T22:14:55.468Z] [delete-default-us-central1-onCreateCase] Retrying task index 0
+[debug] [2023-04-04T22:14:55.470Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/operations/dG9nZXRoZXItZjBmMmMvdXMtY2VudHJhbDEvb25DcmVhdGVDYXNlL21nOUZkQlVKa2F3 [none]
+[debug] [2023-04-04T22:14:55.471Z] [delete-default-us-central1-sendNotificationOnCreate] Retrying task index 0
+[debug] [2023-04-04T22:14:55.472Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/operations/dG9nZXRoZXItZjBmMmMvdXMtY2VudHJhbDEvc2VuZE5vdGlmaWNhdGlvbk9uQ3JlYXRlL2pQVi0ya3BPZUdj [none]
+[debug] [2023-04-04T22:14:55.693Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/operations/dG9nZXRoZXItZjBmMmMvdXMtY2VudHJhbDEvc2VuZE5vdGlmaWNhdGlvbk9uQ3JlYXRlL2pQVi0ya3BPZUdj 200
+[debug] [2023-04-04T22:14:55.694Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/operations/dG9nZXRoZXItZjBmMmMvdXMtY2VudHJhbDEvc2VuZE5vdGlmaWNhdGlvbk9uQ3JlYXRlL2pQVi0ya3BPZUdj {"name":"operations/dG9nZXRoZXItZjBmMmMvdXMtY2VudHJhbDEvc2VuZE5vdGlmaWNhdGlvbk9uQ3JlYXRlL2pQVi0ya3BPZUdj","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/together-f0f2c/locations/us-central1/functions/sendNotificationOnCreate","type":"DELETE_FUNCTION","request":{"@type":"type.googleapis.com/google.protobuf.Empty"},"updateTime":"2023-04-04T22:14:53Z"}}
+[debug] [2023-04-04T22:14:55.708Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/operations/dG9nZXRoZXItZjBmMmMvdXMtY2VudHJhbDEvb25DcmVhdGVDYXNlL21nOUZkQlVKa2F3 200
+[debug] [2023-04-04T22:14:55.709Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/operations/dG9nZXRoZXItZjBmMmMvdXMtY2VudHJhbDEvb25DcmVhdGVDYXNlL21nOUZkQlVKa2F3 {"name":"operations/dG9nZXRoZXItZjBmMmMvdXMtY2VudHJhbDEvb25DcmVhdGVDYXNlL21nOUZkQlVKa2F3","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/together-f0f2c/locations/us-central1/functions/onCreateCase","type":"DELETE_FUNCTION","request":{"@type":"type.googleapis.com/google.protobuf.Empty"},"updateTime":"2023-04-04T22:14:53Z"}}
+[debug] [2023-04-04T22:14:57.696Z] [delete-default-us-central1-sendNotificationOnCreate] Retrying task index 0
+[debug] [2023-04-04T22:14:57.698Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/operations/dG9nZXRoZXItZjBmMmMvdXMtY2VudHJhbDEvc2VuZE5vdGlmaWNhdGlvbk9uQ3JlYXRlL2pQVi0ya3BPZUdj [none]
+[debug] [2023-04-04T22:14:57.710Z] [delete-default-us-central1-onCreateCase] Retrying task index 0
+[debug] [2023-04-04T22:14:57.712Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/operations/dG9nZXRoZXItZjBmMmMvdXMtY2VudHJhbDEvb25DcmVhdGVDYXNlL21nOUZkQlVKa2F3 [none]
+[debug] [2023-04-04T22:14:57.965Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/operations/dG9nZXRoZXItZjBmMmMvdXMtY2VudHJhbDEvc2VuZE5vdGlmaWNhdGlvbk9uQ3JlYXRlL2pQVi0ya3BPZUdj 200
+[debug] [2023-04-04T22:14:57.965Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/operations/dG9nZXRoZXItZjBmMmMvdXMtY2VudHJhbDEvc2VuZE5vdGlmaWNhdGlvbk9uQ3JlYXRlL2pQVi0ya3BPZUdj {"name":"operations/dG9nZXRoZXItZjBmMmMvdXMtY2VudHJhbDEvc2VuZE5vdGlmaWNhdGlvbk9uQ3JlYXRlL2pQVi0ya3BPZUdj","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/together-f0f2c/locations/us-central1/functions/sendNotificationOnCreate","type":"DELETE_FUNCTION","request":{"@type":"type.googleapis.com/google.protobuf.Empty"},"updateTime":"2023-04-04T22:14:53Z"}}
+[debug] [2023-04-04T22:14:57.966Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/operations/dG9nZXRoZXItZjBmMmMvdXMtY2VudHJhbDEvb25DcmVhdGVDYXNlL21nOUZkQlVKa2F3 200
+[debug] [2023-04-04T22:14:57.967Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/operations/dG9nZXRoZXItZjBmMmMvdXMtY2VudHJhbDEvb25DcmVhdGVDYXNlL21nOUZkQlVKa2F3 {"name":"operations/dG9nZXRoZXItZjBmMmMvdXMtY2VudHJhbDEvb25DcmVhdGVDYXNlL21nOUZkQlVKa2F3","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/together-f0f2c/locations/us-central1/functions/onCreateCase","type":"DELETE_FUNCTION","request":{"@type":"type.googleapis.com/google.protobuf.Empty"},"updateTime":"2023-04-04T22:14:56Z"},"done":true,"response":{"@type":"type.googleapis.com/google.protobuf.Empty"}}
+[info] ✔  functions[onCreateCase(us-central1)] Successful delete operation. 
+[debug] [2023-04-04T22:15:01.969Z] [delete-default-us-central1-sendNotificationOnCreate] Retrying task index 0
+[debug] [2023-04-04T22:15:01.970Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/operations/dG9nZXRoZXItZjBmMmMvdXMtY2VudHJhbDEvc2VuZE5vdGlmaWNhdGlvbk9uQ3JlYXRlL2pQVi0ya3BPZUdj [none]
+[debug] [2023-04-04T22:15:02.246Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/operations/dG9nZXRoZXItZjBmMmMvdXMtY2VudHJhbDEvc2VuZE5vdGlmaWNhdGlvbk9uQ3JlYXRlL2pQVi0ya3BPZUdj 200
+[debug] [2023-04-04T22:15:02.246Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/operations/dG9nZXRoZXItZjBmMmMvdXMtY2VudHJhbDEvc2VuZE5vdGlmaWNhdGlvbk9uQ3JlYXRlL2pQVi0ya3BPZUdj {"name":"operations/dG9nZXRoZXItZjBmMmMvdXMtY2VudHJhbDEvc2VuZE5vdGlmaWNhdGlvbk9uQ3JlYXRlL2pQVi0ya3BPZUdj","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/together-f0f2c/locations/us-central1/functions/sendNotificationOnCreate","type":"DELETE_FUNCTION","request":{"@type":"type.googleapis.com/google.protobuf.Empty"},"updateTime":"2023-04-04T22:15:01Z"},"done":true,"response":{"@type":"type.googleapis.com/google.protobuf.Empty"}}
+[info] ✔  functions[sendNotificationOnCreate(us-central1)] Successful delete operation. 
+[debug] [2023-04-04T22:15:02.279Z] Total Function Deployment time: 9410
+[debug] [2023-04-04T22:15:02.279Z] 3 Functions Deployed
+[debug] [2023-04-04T22:15:02.279Z] 1 Functions Errored
+[debug] [2023-04-04T22:15:02.280Z] 0 Function Deployments Aborted
+[debug] [2023-04-04T22:15:02.280Z] Average Function Deployment time: 5042
+[info] 
+[info] Functions deploy had errors with the following functions:
+	sendCaseNotification(us-central1)
+[info] i  functions: cleaning up build files... 
+[debug] [2023-04-04T22:15:02.623Z] >>> [apiv2][query] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/together-f0f2c/locations/us-central1/repositories/gcf-artifacts/packages/send_case_notification [none]
+[debug] [2023-04-04T22:15:02.627Z] >>> [apiv2][query] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/together-f0f2c/locations/us-central1/repositories/gcf-artifacts/packages/on_create_case [none]
+[debug] [2023-04-04T22:15:02.631Z] >>> [apiv2][query] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/together-f0f2c/locations/us-central1/repositories/gcf-artifacts/packages/on_create_case%2Fcache [none]
+[debug] [2023-04-04T22:15:02.635Z] >>> [apiv2][query] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/together-f0f2c/locations/us-central1/repositories/gcf-artifacts/packages/send_notification_on_create [none]
+[debug] [2023-04-04T22:15:02.640Z] >>> [apiv2][query] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/together-f0f2c/locations/us-central1/repositories/gcf-artifacts/packages/send_notification_on_create%2Fcache [none]
+[debug] [2023-04-04T22:15:02.643Z] >>> [apiv2][query] GET https://us.gcr.io/v2/together-f0f2c/gcf/us-central1/tags/list [none]
+[debug] [2023-04-04T22:15:03.116Z] <<< [apiv2][status] GET https://us.gcr.io/v2/together-f0f2c/gcf/us-central1/tags/list 200
+[debug] [2023-04-04T22:15:03.117Z] <<< [apiv2][body] GET https://us.gcr.io/v2/together-f0f2c/gcf/us-central1/tags/list {"child":[],"manifest":{},"name":"together-f0f2c/gcf/us-central1","tags":[]}
+[debug] [2023-04-04T22:15:03.118Z] Could not find image for function projects/together-f0f2c/locations/us-central1/functions/sendCaseNotification
+[debug] [2023-04-04T22:15:03.118Z] Could not find image for function projects/together-f0f2c/locations/us-central1/functions/onCreateCase
+[debug] [2023-04-04T22:15:03.118Z] Could not find image for function projects/together-f0f2c/locations/us-central1/functions/sendNotificationOnCreate
+[debug] [2023-04-04T22:15:03.562Z] <<< [apiv2][status] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/together-f0f2c/locations/us-central1/repositories/gcf-artifacts/packages/send_case_notification 404
+[debug] [2023-04-04T22:15:03.562Z] <<< [apiv2][body] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/together-f0f2c/locations/us-central1/repositories/gcf-artifacts/packages/send_case_notification {"error":{"code":404,"message":"Package \"projects/together-f0f2c/locations/us-central1/repositories/gcf-artifacts/packages/send_case_notification\" was not found.","status":"NOT_FOUND"}}
+[debug] [2023-04-04T22:15:03.566Z] <<< [apiv2][status] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/together-f0f2c/locations/us-central1/repositories/gcf-artifacts/packages/on_create_case 404
+[debug] [2023-04-04T22:15:03.567Z] <<< [apiv2][body] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/together-f0f2c/locations/us-central1/repositories/gcf-artifacts/packages/on_create_case {"error":{"code":404,"message":"Package \"projects/together-f0f2c/locations/us-central1/repositories/gcf-artifacts/packages/on_create_case\" was not found.","status":"NOT_FOUND"}}
+[debug] [2023-04-04T22:15:03.610Z] <<< [apiv2][status] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/together-f0f2c/locations/us-central1/repositories/gcf-artifacts/packages/send_notification_on_create 404
+[debug] [2023-04-04T22:15:03.611Z] <<< [apiv2][body] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/together-f0f2c/locations/us-central1/repositories/gcf-artifacts/packages/send_notification_on_create {"error":{"code":404,"message":"Package \"projects/together-f0f2c/locations/us-central1/repositories/gcf-artifacts/packages/send_notification_on_create\" was not found.","status":"NOT_FOUND"}}
+[debug] [2023-04-04T22:15:03.637Z] <<< [apiv2][status] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/together-f0f2c/locations/us-central1/repositories/gcf-artifacts/packages/on_create_case%2Fcache 404
+[debug] [2023-04-04T22:15:03.638Z] <<< [apiv2][body] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/together-f0f2c/locations/us-central1/repositories/gcf-artifacts/packages/on_create_case%2Fcache {"error":{"code":404,"message":"Package \"projects/together-f0f2c/locations/us-central1/repositories/gcf-artifacts/packages/on_create_case%2Fcache\" was not found.","status":"NOT_FOUND"}}
+[debug] [2023-04-04T22:15:03.654Z] <<< [apiv2][status] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/together-f0f2c/locations/us-central1/repositories/gcf-artifacts/packages/send_notification_on_create%2Fcache 404
+[debug] [2023-04-04T22:15:03.655Z] <<< [apiv2][body] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/together-f0f2c/locations/us-central1/repositories/gcf-artifacts/packages/send_notification_on_create%2Fcache {"error":{"code":404,"message":"Package \"projects/together-f0f2c/locations/us-central1/repositories/gcf-artifacts/packages/send_notification_on_create%2Fcache\" was not found.","status":"NOT_FOUND"}}
+[warn] ⚠  functions: Unhandled error cleaning up build images. This could result in a small monthly bill if not corrected. You can attempt to delete these images by redeploying or you can delete them manually at https://console.cloud.google.com/artifacts/docker/together-f0f2c/us-central1/gcf-artifacts 
+[debug] [2023-04-04T22:15:03.657Z] Functions deploy failed.
+[debug] [2023-04-04T22:15:03.657Z] {
+  "endpoint": {
+    "id": "sendCaseNotification",
+    "project": "together-f0f2c",
+    "region": "us-central1",
+    "entryPoint": "sendCaseNotification",
+    "platform": "gcfv1",
+    "runtime": "nodejs16",
+    "eventTrigger": {
+      "eventType": "providers/cloud.firestore/eventTypes/document.write",
+      "retry": false,
+      "eventFilters": {
+        "resource": "projects/together-f0f2c/databases/(default)/documents/cases/"
+      }
+    },
+    "labels": {
+      "deployment-tool": "cli-firebase"
+    },
+    "serviceAccount": null,
+    "ingressSettings": null,
+    "availableMemoryMb": null,
+    "timeoutSeconds": null,
+    "maxInstances": null,
+    "minInstances": null,
+    "vpc": null,
+    "environmentVariables": {
+      "FIREBASE_CONFIG": "{\"projectId\":\"together-f0f2c\",\"databaseURL\":\"https://together-f0f2c-default-rtdb.firebaseio.com\",\"storageBucket\":\"together-f0f2c.appspot.com\",\"locationId\":\"europe-west3\"}",
+      "GCLOUD_PROJECT": "together-f0f2c",
+      "EVENTARC_CLOUD_EVENT_SOURCE": "projects/together-f0f2c/locations/us-central1/functions/sendCaseNotification"
+    },
+    "codebase": "default",
+    "targetedByOnly": false,
+    "hash": "f18d39e64707a720e0e81b03090ee619764e338f"
+  },
+  "op": "create",
+  "original": {
+    "name": "FirebaseError",
+    "children": [],
+    "context": {
+      "function": "projects/together-f0f2c/locations/us-central1/functions/sendCaseNotification"
+    },
+    "exit": 1,
+    "message": "Failed to create function projects/together-f0f2c/locations/us-central1/functions/sendCaseNotification",
+    "original": {
+      "name": "FirebaseError",
+      "children": [],
+      "context": {
+        "body": {
+          "error": {
+            "code": 400,
+            "message": "The request has errors",
+            "status": "INVALID_ARGUMENT",
+            "details": [
+              {
+                "@type": "type.googleapis.com/google.rpc.BadRequest",
+                "fieldViolations": [
+                  {
+                    "field": "event_trigger",
+                    "description": "Expected value cases/ to match regular expression [^/]+/[^/]+(/[^/]+/[^/]+)*"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "response": {
+          "statusCode": 400
+        }
+      },
+      "exit": 1,
+      "message": "HTTP Error: 400, The request has errors",
+      "status": 400
+    },
+    "status": 400
+  }
+}
+[debug] [2023-04-04T22:15:03.753Z] Error: Failed to create function sendCaseNotification in region us-central1
+    at /usr/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:48:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Fabricator.createV1Function (/usr/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:177:32)
+    at async Fabricator.createEndpoint (/usr/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:129:13)
+    at async handle (/usr/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:85:17)
+[error] 
+[error] Error: There was an error deploying functions
+[debug] [2023-04-04T22:15:10.595Z] ----------------------------------------------------------------------
+[debug] [2023-04-04T22:15:10.597Z] Command:       /usr/bin/node /usr/bin/firebase deploy --only functions
+[debug] [2023-04-04T22:15:10.597Z] CLI Version:   11.25.2
+[debug] [2023-04-04T22:15:10.598Z] Platform:      linux
+[debug] [2023-04-04T22:15:10.598Z] Node Version:  v19.8.1
+[debug] [2023-04-04T22:15:10.598Z] Time:          Wed Apr 05 2023 00:15:10 GMT+0200 (Eastern European Standard Time)
+[debug] [2023-04-04T22:15:10.598Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-04-04T22:15:10.676Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-04-04T22:15:10.676Z] > authorizing via signed-in user (mohamedsalehofficial@gmail.com)
+[debug] [2023-04-04T22:15:10.677Z] [iam] checking project together-f0f2c for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2023-04-04T22:15:10.682Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/together-f0f2c:testIamPermissions [none]
+[debug] [2023-04-04T22:15:10.682Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/together-f0f2c:testIamPermissions x-goog-quota-user=projects/together-f0f2c
+[debug] [2023-04-04T22:15:10.682Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/together-f0f2c:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2023-04-04T22:15:16.623Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/together-f0f2c:testIamPermissions 200
+[debug] [2023-04-04T22:15:16.623Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/together-f0f2c:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2023-04-04T22:15:16.625Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/together-f0f2c/serviceAccounts/together-f0f2c@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2023-04-04T22:15:16.625Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/together-f0f2c/serviceAccounts/together-f0f2c@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2023-04-04T22:15:17.445Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/together-f0f2c/serviceAccounts/together-f0f2c@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2023-04-04T22:15:17.446Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/together-f0f2c/serviceAccounts/together-f0f2c@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[info] 
+[info] === Deploying to 'together-f0f2c'...
+[info] 
+[info] i  deploying functions 
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint
+[info] ✔  functions: Finished running predeploy script. 
+[debug] [2023-04-04T22:15:18.727Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c [none]
+[debug] [2023-04-04T22:15:19.271Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c 200
+[debug] [2023-04-04T22:15:19.271Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c {"projectId":"together-f0f2c","projectNumber":"80841527552","displayName":"Together","name":"projects/together-f0f2c","resources":{"hostingSite":"together-f0f2c","realtimeDatabaseInstance":"together-f0f2c-default-rtdb","storageBucket":"together-f0f2c.appspot.com","locationId":"europe-west3"},"state":"ACTIVE","etag":"1_77c00981-9520-4e5e-8ace-64ddd87b3c81"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2023-04-04T22:15:19.275Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/cloudfunctions.googleapis.com [none]
+[debug] [2023-04-04T22:15:19.275Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/together-f0f2c
+[debug] [2023-04-04T22:15:19.277Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/runtimeconfig.googleapis.com [none]
+[debug] [2023-04-04T22:15:19.277Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/together-f0f2c
+[debug] [2023-04-04T22:15:19.278Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/cloudbuild.googleapis.com [none]
+[debug] [2023-04-04T22:15:19.278Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/cloudbuild.googleapis.com x-goog-quota-user=projects/together-f0f2c
+[debug] [2023-04-04T22:15:19.279Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/artifactregistry.googleapis.com [none]
+[debug] [2023-04-04T22:15:19.279Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/artifactregistry.googleapis.com x-goog-quota-user=projects/together-f0f2c
+[debug] [2023-04-04T22:15:20.438Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/cloudfunctions.googleapis.com 200
+[debug] [2023-04-04T22:15:20.438Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/cloudfunctions.googleapis.com [omitted]
+[info] ✔  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2023-04-04T22:15:20.453Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/runtimeconfig.googleapis.com 200
+[debug] [2023-04-04T22:15:20.453Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2023-04-04T22:15:20.457Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/cloudbuild.googleapis.com 200
+[debug] [2023-04-04T22:15:20.458Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/cloudbuild.googleapis.com [omitted]
+[info] ✔  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2023-04-04T22:15:20.479Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/artifactregistry.googleapis.com 200
+[debug] [2023-04-04T22:15:20.480Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/artifactregistry.googleapis.com [omitted]
+[info] ✔  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2023-04-04T22:15:20.482Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c/adminSdkConfig [none]
+[debug] [2023-04-04T22:15:20.787Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c/adminSdkConfig 200
+[debug] [2023-04-04T22:15:20.787Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c/adminSdkConfig {"projectId":"together-f0f2c","databaseURL":"https://together-f0f2c-default-rtdb.firebaseio.com","storageBucket":"together-f0f2c.appspot.com","locationId":"europe-west3"}
+[debug] [2023-04-04T22:15:20.789Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/together-f0f2c/configs [none]
+[debug] [2023-04-04T22:15:21.757Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/together-f0f2c/configs 200
+[debug] [2023-04-04T22:15:21.758Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/together-f0f2c/configs {}
+[debug] [2023-04-04T22:15:21.765Z] Validating nodejs source
+[debug] [2023-04-04T22:15:22.659Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^11.5.0",
+    "firebase-functions": "^4.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^3.0.0"
+  },
+  "private": true
+}
+[debug] [2023-04-04T22:15:22.660Z] Building nodejs source
+[debug] [2023-04-04T22:15:22.661Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-04-04T22:15:22.668Z] Found firebase-functions binary at '/home/mosaleh/AndroidStudioProjects/Together/functions/node_modules/.bin/firebase-functions'
+[debug] [2023-04-04T22:15:22.930Z] Serving at port 8616
+
+[debug] [2023-04-04T22:15:23.189Z] Got response from /__/functions.yaml {"endpoints":{"sendCaseNotification":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"eventTrigger":{"eventType":"providers/cloud.firestore/eventTypes/document.write","eventFilters":{"resource":"projects/together-f0f2c/databases/(default)/documents/cases/"},"retry":false},"labels":{},"entryPoint":"sendCaseNotification"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2023-04-04T22:15:23.196Z] shutdown requested via /__/quitquitquit
+
+[info] i  functions: preparing functions directory for uploading... 
+[info] i  functions: packaged /home/mosaleh/AndroidStudioProjects/Together/functions (141.8 KB) for uploading 
+[debug] [2023-04-04T22:15:23.260Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/-/functions [none]
+[debug] [2023-04-04T22:15:23.932Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/-/functions 200
+[debug] [2023-04-04T22:15:23.932Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/-/functions {}
+[debug] [2023-04-04T22:15:23.937Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/together-f0f2c/locations/-/functions filter=environment%3D%22GEN_2%22
+[debug] [2023-04-04T22:15:24.937Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/together-f0f2c/locations/-/functions 200
+[debug] [2023-04-04T22:15:24.937Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/together-f0f2c/locations/-/functions {}
+[debug] [2023-04-04T22:15:24.961Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c [none]
+[debug] [2023-04-04T22:15:25.237Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c 200
+[debug] [2023-04-04T22:15:25.237Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c {"projectId":"together-f0f2c","projectNumber":"80841527552","displayName":"Together","name":"projects/together-f0f2c","resources":{"hostingSite":"together-f0f2c","realtimeDatabaseInstance":"together-f0f2c-default-rtdb","storageBucket":"together-f0f2c.appspot.com","locationId":"europe-west3"},"state":"ACTIVE","etag":"1_77c00981-9520-4e5e-8ace-64ddd87b3c81"}
+[debug] [2023-04-04T22:15:25.239Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions:generateUploadUrl [none]
+[debug] [2023-04-04T22:15:25.239Z] >>> [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions:generateUploadUrl {}
+[debug] [2023-04-04T22:15:25.757Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions:generateUploadUrl 200
+[debug] [2023-04-04T22:15:25.757Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions:generateUploadUrl {"uploadUrl":"https://storage.googleapis.com/uploads-979323974809.us-central1.cloudfunctions.appspot.com/e97f4591-7812-4a67-af85-9681147a21dc.zip?GoogleAccessId=service-80841527552@gcf-admin-robot.iam.gserviceaccount.com&Expires=1680648325&Signature=eEI%2FrKqwrNnI%2F33RUY9gnHtv9mYbGL3mRH5OEnJJCdmG7Jb5EQ6csUBa636Z3EfesTtxaM6r9ObcVFEce56EBLyX9gcNwm6iUdO6sqi0gxY%2Ft%2FlW6UpqvChjbPKAMatd2rIiM3lxMaeOkg4e49Mcf4rSDaDIihBEU9Ihxx%2FvBFDUzoouX%2FJnNSuKx%2Bax5LIr3IgQvVhpfRyF8nwMqUZIrXnMb8EPcOItBV2CUD2H23LTmBR20NZUgEH3bViSe6lGBDHu0KEEMOCUBlAoTAWVaJun1UcLr4vlz1gacgJdb0CZYi9BkT9K5JQ8nzYMiMn1QeBlHt%2FERM6J%2BGwWY2%2FbFQ%3D%3D"}
+[debug] [2023-04-04T22:15:25.759Z] >>> [apiv2][query] PUT https://storage.googleapis.com/uploads-979323974809.us-central1.cloudfunctions.appspot.com/e97f4591-7812-4a67-af85-9681147a21dc.zip GoogleAccessId=service-80841527552%40gcf-admin-robot.iam.gserviceaccount.com&Expires=1680648325&Signature=eEI%2FrKqwrNnI%2F33RUY9gnHtv9mYbGL3mRH5OEnJJCdmG7Jb5EQ6csUBa636Z3EfesTtxaM6r9ObcVFEce56EBLyX9gcNwm6iUdO6sqi0gxY%2Ft%2FlW6UpqvChjbPKAMatd2rIiM3lxMaeOkg4e49Mcf4rSDaDIihBEU9Ihxx%2FvBFDUzoouX%2FJnNSuKx%2Bax5LIr3IgQvVhpfRyF8nwMqUZIrXnMb8EPcOItBV2CUD2H23LTmBR20NZUgEH3bViSe6lGBDHu0KEEMOCUBlAoTAWVaJun1UcLr4vlz1gacgJdb0CZYi9BkT9K5JQ8nzYMiMn1QeBlHt%2FERM6J%2BGwWY2%2FbFQ%3D%3D
+[debug] [2023-04-04T22:15:25.759Z] >>> [apiv2][body] PUT https://storage.googleapis.com/uploads-979323974809.us-central1.cloudfunctions.appspot.com/e97f4591-7812-4a67-af85-9681147a21dc.zip [stream]
+[debug] [2023-04-04T22:15:27.599Z] <<< [apiv2][status] PUT https://storage.googleapis.com/uploads-979323974809.us-central1.cloudfunctions.appspot.com/e97f4591-7812-4a67-af85-9681147a21dc.zip 200
+[debug] [2023-04-04T22:15:27.599Z] <<< [apiv2][body] PUT https://storage.googleapis.com/uploads-979323974809.us-central1.cloudfunctions.appspot.com/e97f4591-7812-4a67-af85-9681147a21dc.zip [omitted]
+[info] ✔  functions: functions folder uploaded successfully 
+[info] i  functions: creating Node.js 16 function sendCaseNotification(us-central1)... 
+[debug] [2023-04-04T22:15:27.618Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions [none]
+[debug] [2023-04-04T22:15:27.618Z] >>> [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions {"name":"projects/together-f0f2c/locations/us-central1/functions/sendCaseNotification","sourceUploadUrl":"https://storage.googleapis.com/uploads-979323974809.us-central1.cloudfunctions.appspot.com/e97f4591-7812-4a67-af85-9681147a21dc.zip?GoogleAccessId=service-80841527552@gcf-admin-robot.iam.gserviceaccount.com&Expires=1680648325&Signature=eEI%2FrKqwrNnI%2F33RUY9gnHtv9mYbGL3mRH5OEnJJCdmG7Jb5EQ6csUBa636Z3EfesTtxaM6r9ObcVFEce56EBLyX9gcNwm6iUdO6sqi0gxY%2Ft%2FlW6UpqvChjbPKAMatd2rIiM3lxMaeOkg4e49Mcf4rSDaDIihBEU9Ihxx%2FvBFDUzoouX%2FJnNSuKx%2Bax5LIr3IgQvVhpfRyF8nwMqUZIrXnMb8EPcOItBV2CUD2H23LTmBR20NZUgEH3bViSe6lGBDHu0KEEMOCUBlAoTAWVaJun1UcLr4vlz1gacgJdb0CZYi9BkT9K5JQ8nzYMiMn1QeBlHt%2FERM6J%2BGwWY2%2FbFQ%3D%3D","entryPoint":"sendCaseNotification","runtime":"nodejs16","dockerRegistry":"ARTIFACT_REGISTRY","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"f18d39e64707a720e0e81b03090ee619764e338f"},"eventTrigger":{"eventType":"providers/cloud.firestore/eventTypes/document.write","resource":"projects/together-f0f2c/databases/(default)/documents/cases/"},"minInstances":null,"maxInstances":null,"ingressSettings":null,"environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"together-f0f2c\",\"databaseURL\":\"https://together-f0f2c-default-rtdb.firebaseio.com\",\"storageBucket\":\"together-f0f2c.appspot.com\",\"locationId\":\"europe-west3\"}","GCLOUD_PROJECT":"together-f0f2c","EVENTARC_CLOUD_EVENT_SOURCE":"projects/together-f0f2c/locations/us-central1/functions/sendCaseNotification"},"serviceAccountEmail":null,"availableMemoryMb":null,"timeout":null,"vpcConnector":null,"vpcConnectorEgressSettings":null}
+[debug] [2023-04-04T22:15:28.013Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions 400
+[debug] [2023-04-04T22:15:28.013Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions {"error":{"code":400,"message":"The request has errors","status":"INVALID_ARGUMENT","details":[{"@type":"type.googleapis.com/google.rpc.BadRequest","fieldViolations":[{"field":"event_trigger","description":"Expected value cases/ to match regular expression [^/]+/[^/]+(/[^/]+/[^/]+)*"}]}]}}
+[warn] ⚠  functions: failed to create function projects/together-f0f2c/locations/us-central1/functions/sendCaseNotification 
+[error] Failed to create function projects/together-f0f2c/locations/us-central1/functions/sendCaseNotification
+[debug] [2023-04-04T22:15:28.029Z] Total Function Deployment time: 410
+[debug] [2023-04-04T22:15:28.029Z] 1 Functions Deployed
+[debug] [2023-04-04T22:15:28.029Z] 1 Functions Errored
+[debug] [2023-04-04T22:15:28.029Z] 0 Function Deployments Aborted
+[debug] [2023-04-04T22:15:28.030Z] Average Function Deployment time: 407
+[info] 
+[info] Functions deploy had errors with the following functions:
+	sendCaseNotification(us-central1)
+[info] i  functions: cleaning up build files... 
+[debug] [2023-04-04T22:15:28.297Z] >>> [apiv2][query] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/together-f0f2c/locations/us-central1/repositories/gcf-artifacts/packages/send_case_notification [none]
+[debug] [2023-04-04T22:15:28.301Z] >>> [apiv2][query] GET https://us.gcr.io/v2/together-f0f2c/gcf/us-central1/tags/list [none]
+[debug] [2023-04-04T22:15:28.681Z] <<< [apiv2][status] GET https://us.gcr.io/v2/together-f0f2c/gcf/us-central1/tags/list 200
+[debug] [2023-04-04T22:15:28.682Z] <<< [apiv2][body] GET https://us.gcr.io/v2/together-f0f2c/gcf/us-central1/tags/list {"child":[],"manifest":{},"name":"together-f0f2c/gcf/us-central1","tags":[]}
+[debug] [2023-04-04T22:15:28.683Z] Could not find image for function projects/together-f0f2c/locations/us-central1/functions/sendCaseNotification
+[debug] [2023-04-04T22:15:29.231Z] <<< [apiv2][status] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/together-f0f2c/locations/us-central1/repositories/gcf-artifacts/packages/send_case_notification 404
+[debug] [2023-04-04T22:15:29.231Z] <<< [apiv2][body] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/together-f0f2c/locations/us-central1/repositories/gcf-artifacts/packages/send_case_notification {"error":{"code":404,"message":"Package \"projects/together-f0f2c/locations/us-central1/repositories/gcf-artifacts/packages/send_case_notification\" was not found.","status":"NOT_FOUND"}}
+[debug] [2023-04-04T22:15:29.232Z] Functions deploy failed.
+[debug] [2023-04-04T22:15:29.232Z] {
+  "endpoint": {
+    "id": "sendCaseNotification",
+    "project": "together-f0f2c",
+    "region": "us-central1",
+    "entryPoint": "sendCaseNotification",
+    "platform": "gcfv1",
+    "runtime": "nodejs16",
+    "eventTrigger": {
+      "eventType": "providers/cloud.firestore/eventTypes/document.write",
+      "retry": false,
+      "eventFilters": {
+        "resource": "projects/together-f0f2c/databases/(default)/documents/cases/"
+      }
+    },
+    "labels": {
+      "deployment-tool": "cli-firebase"
+    },
+    "serviceAccount": null,
+    "ingressSettings": null,
+    "availableMemoryMb": null,
+    "timeoutSeconds": null,
+    "maxInstances": null,
+    "minInstances": null,
+    "vpc": null,
+    "environmentVariables": {
+      "FIREBASE_CONFIG": "{\"projectId\":\"together-f0f2c\",\"databaseURL\":\"https://together-f0f2c-default-rtdb.firebaseio.com\",\"storageBucket\":\"together-f0f2c.appspot.com\",\"locationId\":\"europe-west3\"}",
+      "GCLOUD_PROJECT": "together-f0f2c",
+      "EVENTARC_CLOUD_EVENT_SOURCE": "projects/together-f0f2c/locations/us-central1/functions/sendCaseNotification"
+    },
+    "codebase": "default",
+    "targetedByOnly": false,
+    "hash": "f18d39e64707a720e0e81b03090ee619764e338f"
+  },
+  "op": "create",
+  "original": {
+    "name": "FirebaseError",
+    "children": [],
+    "context": {
+      "function": "projects/together-f0f2c/locations/us-central1/functions/sendCaseNotification"
+    },
+    "exit": 1,
+    "message": "Failed to create function projects/together-f0f2c/locations/us-central1/functions/sendCaseNotification",
+    "original": {
+      "name": "FirebaseError",
+      "children": [],
+      "context": {
+        "body": {
+          "error": {
+            "code": 400,
+            "message": "The request has errors",
+            "status": "INVALID_ARGUMENT",
+            "details": [
+              {
+                "@type": "type.googleapis.com/google.rpc.BadRequest",
+                "fieldViolations": [
+                  {
+                    "field": "event_trigger",
+                    "description": "Expected value cases/ to match regular expression [^/]+/[^/]+(/[^/]+/[^/]+)*"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "response": {
+          "statusCode": 400
+        }
+      },
+      "exit": 1,
+      "message": "HTTP Error: 400, The request has errors",
+      "status": 400
+    },
+    "status": 400
+  }
+}
+[debug] [2023-04-04T22:15:29.310Z] Error: Failed to create function sendCaseNotification in region us-central1
+    at /usr/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:48:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Fabricator.createV1Function (/usr/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:177:32)
+    at async Fabricator.createEndpoint (/usr/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:129:13)
+    at async handle (/usr/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:85:17)
+[error] 
+[error] Error: There was an error deploying functions
+[debug] [2023-04-04T22:18:39.596Z] ----------------------------------------------------------------------
+[debug] [2023-04-04T22:18:39.602Z] Command:       /usr/bin/node /usr/bin/firebase deploy --only functions
+[debug] [2023-04-04T22:18:39.604Z] CLI Version:   11.25.2
+[debug] [2023-04-04T22:18:39.604Z] Platform:      linux
+[debug] [2023-04-04T22:18:39.604Z] Node Version:  v19.8.1
+[debug] [2023-04-04T22:18:39.604Z] Time:          Wed Apr 05 2023 00:18:39 GMT+0200 (Eastern European Standard Time)
+[debug] [2023-04-04T22:18:39.605Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-04-04T22:18:39.722Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-04-04T22:18:39.723Z] > authorizing via signed-in user (mohamedsalehofficial@gmail.com)
+[debug] [2023-04-04T22:18:39.723Z] [iam] checking project together-f0f2c for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2023-04-04T22:18:39.726Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/together-f0f2c:testIamPermissions [none]
+[debug] [2023-04-04T22:18:39.726Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/together-f0f2c:testIamPermissions x-goog-quota-user=projects/together-f0f2c
+[debug] [2023-04-04T22:18:39.727Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/together-f0f2c:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2023-04-04T22:18:40.698Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/together-f0f2c:testIamPermissions 200
+[debug] [2023-04-04T22:18:40.699Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/together-f0f2c:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2023-04-04T22:18:40.702Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/together-f0f2c/serviceAccounts/together-f0f2c@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2023-04-04T22:18:40.703Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/together-f0f2c/serviceAccounts/together-f0f2c@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2023-04-04T22:18:41.516Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/together-f0f2c/serviceAccounts/together-f0f2c@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2023-04-04T22:18:41.517Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/together-f0f2c/serviceAccounts/together-f0f2c@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[info] 
+[info] === Deploying to 'together-f0f2c'...
+[info] 
+[info] i  deploying functions 
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint
+[info] ✔  functions: Finished running predeploy script. 
+[debug] [2023-04-04T22:18:43.553Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c [none]
+[debug] [2023-04-04T22:18:44.059Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c 200
+[debug] [2023-04-04T22:18:44.060Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c {"projectId":"together-f0f2c","projectNumber":"80841527552","displayName":"Together","name":"projects/together-f0f2c","resources":{"hostingSite":"together-f0f2c","realtimeDatabaseInstance":"together-f0f2c-default-rtdb","storageBucket":"together-f0f2c.appspot.com","locationId":"europe-west3"},"state":"ACTIVE","etag":"1_77c00981-9520-4e5e-8ace-64ddd87b3c81"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2023-04-04T22:18:44.064Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/cloudfunctions.googleapis.com [none]
+[debug] [2023-04-04T22:18:44.064Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/together-f0f2c
+[debug] [2023-04-04T22:18:44.067Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/runtimeconfig.googleapis.com [none]
+[debug] [2023-04-04T22:18:44.068Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/together-f0f2c
+[debug] [2023-04-04T22:18:44.071Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/cloudbuild.googleapis.com [none]
+[debug] [2023-04-04T22:18:44.071Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/cloudbuild.googleapis.com x-goog-quota-user=projects/together-f0f2c
+[debug] [2023-04-04T22:18:44.073Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/artifactregistry.googleapis.com [none]
+[debug] [2023-04-04T22:18:44.073Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/artifactregistry.googleapis.com x-goog-quota-user=projects/together-f0f2c
+[debug] [2023-04-04T22:18:45.174Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/runtimeconfig.googleapis.com 200
+[debug] [2023-04-04T22:18:45.174Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2023-04-04T22:18:45.179Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/cloudfunctions.googleapis.com 200
+[debug] [2023-04-04T22:18:45.179Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/cloudfunctions.googleapis.com [omitted]
+[info] ✔  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2023-04-04T22:18:45.204Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/cloudbuild.googleapis.com 200
+[debug] [2023-04-04T22:18:45.204Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/cloudbuild.googleapis.com [omitted]
+[info] ✔  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2023-04-04T22:18:45.265Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/artifactregistry.googleapis.com 200
+[debug] [2023-04-04T22:18:45.265Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/artifactregistry.googleapis.com [omitted]
+[info] ✔  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2023-04-04T22:18:45.266Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c/adminSdkConfig [none]
+[debug] [2023-04-04T22:18:45.638Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c/adminSdkConfig 200
+[debug] [2023-04-04T22:18:45.639Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c/adminSdkConfig {"projectId":"together-f0f2c","databaseURL":"https://together-f0f2c-default-rtdb.firebaseio.com","storageBucket":"together-f0f2c.appspot.com","locationId":"europe-west3"}
+[debug] [2023-04-04T22:18:45.640Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/together-f0f2c/configs [none]
+[debug] [2023-04-04T22:18:46.819Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/together-f0f2c/configs 200
+[debug] [2023-04-04T22:18:46.819Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/together-f0f2c/configs {}
+[debug] [2023-04-04T22:18:46.821Z] Validating nodejs source
+[debug] [2023-04-04T22:18:48.816Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^11.5.0",
+    "firebase-functions": "^4.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^3.0.0"
+  },
+  "private": true
+}
+[debug] [2023-04-04T22:18:48.817Z] Building nodejs source
+[debug] [2023-04-04T22:18:48.820Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-04-04T22:18:48.840Z] Found firebase-functions binary at '/home/mosaleh/AndroidStudioProjects/Together/functions/node_modules/.bin/firebase-functions'
+[debug] [2023-04-04T22:18:49.961Z] Serving at port 8409
+
+[debug] [2023-04-04T22:18:50.911Z] Got response from /__/functions.yaml {"endpoints":{"sendCaseNotification":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"eventTrigger":{"eventType":"providers/cloud.firestore/eventTypes/document.write","eventFilters":{"resource":"projects/together-f0f2c/databases/(default)/documents/cases/"},"retry":false},"labels":{},"entryPoint":"sendCaseNotification"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2023-04-04T22:18:50.957Z] shutdown requested via /__/quitquitquit
+
+[info] i  functions: preparing functions directory for uploading... 
+[info] i  functions: packaged /home/mosaleh/AndroidStudioProjects/Together/functions (141.8 KB) for uploading 
+[debug] [2023-04-04T22:18:51.171Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/-/functions [none]
+[debug] [2023-04-04T22:18:51.824Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/-/functions 200
+[debug] [2023-04-04T22:18:51.824Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/-/functions {"functions":[{"name":"projects/together-f0f2c/locations/us-central1/functions/GeoNotification","httpsTrigger":{"url":"https://us-central1-together-f0f2c.cloudfunctions.net/GeoNotification","securityLevel":"SECURE_ALWAYS"},"status":"DEPLOY_IN_PROGRESS","entryPoint":"GeoNotification","timeout":"60s","availableMemoryMb":256,"serviceAccountEmail":"together-f0f2c@appspot.gserviceaccount.com","updateTime":"2023-04-04T22:17:47.740Z","versionId":"1","labels":{"deployment-tool":"console-cloud"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-979323974809.us-central1.cloudfunctions.appspot.com/42a76bf0-fa64-4c47-8cf0-f074faa134e6.zip","runtime":"nodejs18","maxInstances":3000,"ingressSettings":"ALLOW_ALL","buildId":"a670e323-3929-413e-81ff-d6eb38648aa2","buildName":"projects/80841527552/locations/us-central1/builds/a670e323-3929-413e-81ff-d6eb38648aa2","dockerRegistry":"CONTAINER_REGISTRY"}]}
+[debug] [2023-04-04T22:18:51.830Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/together-f0f2c/locations/-/functions filter=environment%3D%22GEN_2%22
+[debug] [2023-04-04T22:18:52.813Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/together-f0f2c/locations/-/functions 200
+[debug] [2023-04-04T22:18:52.813Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/together-f0f2c/locations/-/functions {}
+[debug] [2023-04-04T22:18:52.826Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c [none]
+[debug] [2023-04-04T22:18:53.233Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c 200
+[debug] [2023-04-04T22:18:53.233Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c {"projectId":"together-f0f2c","projectNumber":"80841527552","displayName":"Together","name":"projects/together-f0f2c","resources":{"hostingSite":"together-f0f2c","realtimeDatabaseInstance":"together-f0f2c-default-rtdb","storageBucket":"together-f0f2c.appspot.com","locationId":"europe-west3"},"state":"ACTIVE","etag":"1_77c00981-9520-4e5e-8ace-64ddd87b3c81"}
+[debug] [2023-04-04T22:18:53.237Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions:generateUploadUrl [none]
+[debug] [2023-04-04T22:18:53.237Z] >>> [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions:generateUploadUrl {}
+[debug] [2023-04-04T22:18:53.735Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions:generateUploadUrl 200
+[debug] [2023-04-04T22:18:53.735Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions:generateUploadUrl {"uploadUrl":"https://storage.googleapis.com/uploads-979323974809.us-central1.cloudfunctions.appspot.com/cc9d1080-b5d3-4089-a1eb-99149d15c66a.zip?GoogleAccessId=service-80841527552@gcf-admin-robot.iam.gserviceaccount.com&Expires=1680648533&Signature=aG2bw%2FR2wFxMQ49OFRe%2BscauePRymCRS26nJqMA%2BEo5%2B0noc3exKGDYtSabC0mnKNceQCZ1UHmYqV2TZzieORrBsZlHrnNGrV9eENeegK7F8NmFdJ1OYXwhhWH3gLQo5oPG3jf3ShqovmQ9wlr5N%2BvUv7s9P%2BB7dAJhWznLVPyGTPUolTW7naqnsSBGsuSoocxF7iTd8sob%2BOC7U2tpCw6vvgb%2FYkxWa0A%2BElGN4IrqZbUGZa7TE%2B0SBac08ycJZWZPIV5pvewOfTC0qRccLHKHuZGqlmXMmGIk1E6eNBhFGmOQzZYmZLFg7vgmLfgCsVCEj73DdoRhVPrYJa5MeSg%3D%3D"}
+[debug] [2023-04-04T22:18:53.737Z] >>> [apiv2][query] PUT https://storage.googleapis.com/uploads-979323974809.us-central1.cloudfunctions.appspot.com/cc9d1080-b5d3-4089-a1eb-99149d15c66a.zip GoogleAccessId=service-80841527552%40gcf-admin-robot.iam.gserviceaccount.com&Expires=1680648533&Signature=aG2bw%2FR2wFxMQ49OFRe%2BscauePRymCRS26nJqMA%2BEo5%2B0noc3exKGDYtSabC0mnKNceQCZ1UHmYqV2TZzieORrBsZlHrnNGrV9eENeegK7F8NmFdJ1OYXwhhWH3gLQo5oPG3jf3ShqovmQ9wlr5N%2BvUv7s9P%2BB7dAJhWznLVPyGTPUolTW7naqnsSBGsuSoocxF7iTd8sob%2BOC7U2tpCw6vvgb%2FYkxWa0A%2BElGN4IrqZbUGZa7TE%2B0SBac08ycJZWZPIV5pvewOfTC0qRccLHKHuZGqlmXMmGIk1E6eNBhFGmOQzZYmZLFg7vgmLfgCsVCEj73DdoRhVPrYJa5MeSg%3D%3D
+[debug] [2023-04-04T22:18:53.738Z] >>> [apiv2][body] PUT https://storage.googleapis.com/uploads-979323974809.us-central1.cloudfunctions.appspot.com/cc9d1080-b5d3-4089-a1eb-99149d15c66a.zip [stream]
+[debug] [2023-04-04T22:18:55.688Z] <<< [apiv2][status] PUT https://storage.googleapis.com/uploads-979323974809.us-central1.cloudfunctions.appspot.com/cc9d1080-b5d3-4089-a1eb-99149d15c66a.zip 200
+[debug] [2023-04-04T22:18:55.689Z] <<< [apiv2][body] PUT https://storage.googleapis.com/uploads-979323974809.us-central1.cloudfunctions.appspot.com/cc9d1080-b5d3-4089-a1eb-99149d15c66a.zip [omitted]
+[info] ✔  functions: functions folder uploaded successfully 
+[info] i  functions: creating Node.js 16 function sendCaseNotification(us-central1)... 
+[debug] [2023-04-04T22:18:55.721Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions [none]
+[debug] [2023-04-04T22:18:55.721Z] >>> [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions {"name":"projects/together-f0f2c/locations/us-central1/functions/sendCaseNotification","sourceUploadUrl":"https://storage.googleapis.com/uploads-979323974809.us-central1.cloudfunctions.appspot.com/cc9d1080-b5d3-4089-a1eb-99149d15c66a.zip?GoogleAccessId=service-80841527552@gcf-admin-robot.iam.gserviceaccount.com&Expires=1680648533&Signature=aG2bw%2FR2wFxMQ49OFRe%2BscauePRymCRS26nJqMA%2BEo5%2B0noc3exKGDYtSabC0mnKNceQCZ1UHmYqV2TZzieORrBsZlHrnNGrV9eENeegK7F8NmFdJ1OYXwhhWH3gLQo5oPG3jf3ShqovmQ9wlr5N%2BvUv7s9P%2BB7dAJhWznLVPyGTPUolTW7naqnsSBGsuSoocxF7iTd8sob%2BOC7U2tpCw6vvgb%2FYkxWa0A%2BElGN4IrqZbUGZa7TE%2B0SBac08ycJZWZPIV5pvewOfTC0qRccLHKHuZGqlmXMmGIk1E6eNBhFGmOQzZYmZLFg7vgmLfgCsVCEj73DdoRhVPrYJa5MeSg%3D%3D","entryPoint":"sendCaseNotification","runtime":"nodejs16","dockerRegistry":"ARTIFACT_REGISTRY","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"f18d39e64707a720e0e81b03090ee619764e338f"},"eventTrigger":{"eventType":"providers/cloud.firestore/eventTypes/document.write","resource":"projects/together-f0f2c/databases/(default)/documents/cases/"},"minInstances":null,"maxInstances":null,"ingressSettings":null,"environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"together-f0f2c\",\"databaseURL\":\"https://together-f0f2c-default-rtdb.firebaseio.com\",\"storageBucket\":\"together-f0f2c.appspot.com\",\"locationId\":\"europe-west3\"}","GCLOUD_PROJECT":"together-f0f2c","EVENTARC_CLOUD_EVENT_SOURCE":"projects/together-f0f2c/locations/us-central1/functions/sendCaseNotification"},"serviceAccountEmail":null,"availableMemoryMb":null,"timeout":null,"vpcConnector":null,"vpcConnectorEgressSettings":null}
+[debug] [2023-04-04T22:18:56.003Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions 400
+[debug] [2023-04-04T22:18:56.003Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions {"error":{"code":400,"message":"The request has errors","status":"INVALID_ARGUMENT","details":[{"@type":"type.googleapis.com/google.rpc.BadRequest","fieldViolations":[{"field":"event_trigger","description":"Expected value cases/ to match regular expression [^/]+/[^/]+(/[^/]+/[^/]+)*"}]}]}}
+[warn] ⚠  functions: failed to create function projects/together-f0f2c/locations/us-central1/functions/sendCaseNotification 
+[error] Failed to create function projects/together-f0f2c/locations/us-central1/functions/sendCaseNotification
+[debug] [2023-04-04T22:18:56.010Z] Total Function Deployment time: 303
+[debug] [2023-04-04T22:18:56.010Z] 1 Functions Deployed
+[debug] [2023-04-04T22:18:56.010Z] 1 Functions Errored
+[debug] [2023-04-04T22:18:56.011Z] 0 Function Deployments Aborted
+[debug] [2023-04-04T22:18:56.011Z] Average Function Deployment time: 297
+[info] 
+[info] Functions deploy had errors with the following functions:
+	sendCaseNotification(us-central1)
+[info] i  functions: cleaning up build files... 
+[debug] [2023-04-04T22:18:56.414Z] >>> [apiv2][query] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/together-f0f2c/locations/us-central1/repositories/gcf-artifacts/packages/send_case_notification [none]
+[debug] [2023-04-04T22:18:56.415Z] >>> [apiv2][query] GET https://us.gcr.io/v2/together-f0f2c/gcf/us-central1/tags/list [none]
+[debug] [2023-04-04T22:18:57.151Z] <<< [apiv2][status] GET https://us.gcr.io/v2/together-f0f2c/gcf/us-central1/tags/list 200
+[debug] [2023-04-04T22:18:57.151Z] <<< [apiv2][body] GET https://us.gcr.io/v2/together-f0f2c/gcf/us-central1/tags/list {"child":["6f14a428-95ce-4599-9fbb-d23f0741d3ed"],"manifest":{},"name":"together-f0f2c/gcf/us-central1","tags":[]}
+[debug] [2023-04-04T22:18:57.152Z] >>> [apiv2][query] GET https://us.gcr.io/v2/together-f0f2c/gcf/us-central1/6f14a428-95ce-4599-9fbb-d23f0741d3ed/tags/list [none]
+[debug] [2023-04-04T22:18:57.422Z] <<< [apiv2][status] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/together-f0f2c/locations/us-central1/repositories/gcf-artifacts/packages/send_case_notification 404
+[debug] [2023-04-04T22:18:57.422Z] <<< [apiv2][body] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/together-f0f2c/locations/us-central1/repositories/gcf-artifacts/packages/send_case_notification {"error":{"code":404,"message":"Package \"projects/together-f0f2c/locations/us-central1/repositories/gcf-artifacts/packages/send_case_notification\" was not found.","status":"NOT_FOUND"}}
+[debug] [2023-04-04T22:18:57.650Z] <<< [apiv2][status] GET https://us.gcr.io/v2/together-f0f2c/gcf/us-central1/6f14a428-95ce-4599-9fbb-d23f0741d3ed/tags/list 200
+[debug] [2023-04-04T22:18:57.651Z] <<< [apiv2][body] GET https://us.gcr.io/v2/together-f0f2c/gcf/us-central1/6f14a428-95ce-4599-9fbb-d23f0741d3ed/tags/list {"child":["cache"],"manifest":{"sha256:282f52c7e98d76d64d90429a50be62cc2044fdabb87ac246980a41c222aba6cb":{"imageSizeBytes":"207611971","layerId":"","mediaType":"application/vnd.docker.distribution.manifest.v2+json","tag":["GeoNotification_version-1","latest"],"timeCreatedMs":"315532801000","timeUploadedMs":"1680646715235"}},"name":"together-f0f2c/gcf/us-central1/6f14a428-95ce-4599-9fbb-d23f0741d3ed","tags":["GeoNotification_version-1","latest"]}
+[debug] [2023-04-04T22:18:57.652Z] Could not find image for function projects/together-f0f2c/locations/us-central1/functions/sendCaseNotification
+[debug] [2023-04-04T22:18:57.652Z] Functions deploy failed.
+[debug] [2023-04-04T22:18:57.653Z] {
+  "endpoint": {
+    "id": "sendCaseNotification",
+    "project": "together-f0f2c",
+    "region": "us-central1",
+    "entryPoint": "sendCaseNotification",
+    "platform": "gcfv1",
+    "runtime": "nodejs16",
+    "eventTrigger": {
+      "eventType": "providers/cloud.firestore/eventTypes/document.write",
+      "retry": false,
+      "eventFilters": {
+        "resource": "projects/together-f0f2c/databases/(default)/documents/cases/"
+      }
+    },
+    "labels": {
+      "deployment-tool": "cli-firebase"
+    },
+    "serviceAccount": null,
+    "ingressSettings": null,
+    "availableMemoryMb": null,
+    "timeoutSeconds": null,
+    "maxInstances": null,
+    "minInstances": null,
+    "vpc": null,
+    "environmentVariables": {
+      "FIREBASE_CONFIG": "{\"projectId\":\"together-f0f2c\",\"databaseURL\":\"https://together-f0f2c-default-rtdb.firebaseio.com\",\"storageBucket\":\"together-f0f2c.appspot.com\",\"locationId\":\"europe-west3\"}",
+      "GCLOUD_PROJECT": "together-f0f2c",
+      "EVENTARC_CLOUD_EVENT_SOURCE": "projects/together-f0f2c/locations/us-central1/functions/sendCaseNotification"
+    },
+    "codebase": "default",
+    "targetedByOnly": false,
+    "hash": "f18d39e64707a720e0e81b03090ee619764e338f"
+  },
+  "op": "create",
+  "original": {
+    "name": "FirebaseError",
+    "children": [],
+    "context": {
+      "function": "projects/together-f0f2c/locations/us-central1/functions/sendCaseNotification"
+    },
+    "exit": 1,
+    "message": "Failed to create function projects/together-f0f2c/locations/us-central1/functions/sendCaseNotification",
+    "original": {
+      "name": "FirebaseError",
+      "children": [],
+      "context": {
+        "body": {
+          "error": {
+            "code": 400,
+            "message": "The request has errors",
+            "status": "INVALID_ARGUMENT",
+            "details": [
+              {
+                "@type": "type.googleapis.com/google.rpc.BadRequest",
+                "fieldViolations": [
+                  {
+                    "field": "event_trigger",
+                    "description": "Expected value cases/ to match regular expression [^/]+/[^/]+(/[^/]+/[^/]+)*"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "response": {
+          "statusCode": 400
+        }
+      },
+      "exit": 1,
+      "message": "HTTP Error: 400, The request has errors",
+      "status": 400
+    },
+    "status": 400
+  }
+}
+[debug] [2023-04-04T22:18:57.815Z] Error: Failed to create function sendCaseNotification in region us-central1
+    at /usr/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:48:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Fabricator.createV1Function (/usr/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:177:32)
+    at async Fabricator.createEndpoint (/usr/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:129:13)
+    at async handle (/usr/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:85:17)
+[error] 
+[error] Error: There was an error deploying functions
+[debug] [2023-04-04T22:29:04.296Z] ----------------------------------------------------------------------
+[debug] [2023-04-04T22:29:04.547Z] Command:       /usr/bin/node /usr/bin/firebase deploy --only functions
+[debug] [2023-04-04T22:29:04.565Z] CLI Version:   11.25.2
+[debug] [2023-04-04T22:29:04.567Z] Platform:      linux
+[debug] [2023-04-04T22:29:04.567Z] Node Version:  v19.8.1
+[debug] [2023-04-04T22:29:04.569Z] Time:          Wed Apr 05 2023 00:29:04 GMT+0200 (Eastern European Standard Time)
+[debug] [2023-04-04T22:29:04.570Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-04-04T22:29:04.908Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-04-04T22:29:04.911Z] > authorizing via signed-in user (mohamedsalehofficial@gmail.com)
+[debug] [2023-04-04T22:29:04.911Z] [iam] checking project together-f0f2c for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2023-04-04T22:29:04.932Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/together-f0f2c:testIamPermissions [none]
+[debug] [2023-04-04T22:29:04.932Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/together-f0f2c:testIamPermissions x-goog-quota-user=projects/together-f0f2c
+[debug] [2023-04-04T22:29:04.932Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/together-f0f2c:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2023-04-04T22:29:07.377Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/together-f0f2c:testIamPermissions 200
+[debug] [2023-04-04T22:29:07.377Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/together-f0f2c:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2023-04-04T22:29:07.378Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/together-f0f2c/serviceAccounts/together-f0f2c@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2023-04-04T22:29:07.378Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/together-f0f2c/serviceAccounts/together-f0f2c@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2023-04-04T22:29:08.338Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/together-f0f2c/serviceAccounts/together-f0f2c@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2023-04-04T22:29:08.338Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/together-f0f2c/serviceAccounts/together-f0f2c@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[info] 
+[info] === Deploying to 'together-f0f2c'...
+[info] 
+[info] i  deploying functions 
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint
+[info] ✔  functions: Finished running predeploy script. 
+[debug] [2023-04-04T22:29:36.898Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c [none]
+[debug] [2023-04-04T22:29:37.864Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c 200
+[debug] [2023-04-04T22:29:37.865Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c {"projectId":"together-f0f2c","projectNumber":"80841527552","displayName":"Together","name":"projects/together-f0f2c","resources":{"hostingSite":"together-f0f2c","realtimeDatabaseInstance":"together-f0f2c-default-rtdb","storageBucket":"together-f0f2c.appspot.com","locationId":"europe-west3"},"state":"ACTIVE","etag":"1_77c00981-9520-4e5e-8ace-64ddd87b3c81"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2023-04-04T22:29:37.893Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/cloudfunctions.googleapis.com [none]
+[debug] [2023-04-04T22:29:37.893Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/together-f0f2c
+[debug] [2023-04-04T22:29:37.897Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/runtimeconfig.googleapis.com [none]
+[debug] [2023-04-04T22:29:37.897Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/together-f0f2c
+[debug] [2023-04-04T22:29:37.899Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/cloudbuild.googleapis.com [none]
+[debug] [2023-04-04T22:29:37.899Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/cloudbuild.googleapis.com x-goog-quota-user=projects/together-f0f2c
+[debug] [2023-04-04T22:29:37.901Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/artifactregistry.googleapis.com [none]
+[debug] [2023-04-04T22:29:37.901Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/artifactregistry.googleapis.com x-goog-quota-user=projects/together-f0f2c
+[debug] [2023-04-04T22:29:39.074Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/cloudbuild.googleapis.com 200
+[debug] [2023-04-04T22:29:39.074Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/cloudbuild.googleapis.com [omitted]
+[info] ✔  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2023-04-04T22:29:39.076Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/cloudfunctions.googleapis.com 200
+[debug] [2023-04-04T22:29:39.076Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/cloudfunctions.googleapis.com [omitted]
+[info] ✔  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2023-04-04T22:29:39.085Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/runtimeconfig.googleapis.com 200
+[debug] [2023-04-04T22:29:39.085Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2023-04-04T22:29:39.087Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/artifactregistry.googleapis.com 200
+[debug] [2023-04-04T22:29:39.087Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/together-f0f2c/services/artifactregistry.googleapis.com [omitted]
+[info] ✔  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2023-04-04T22:29:39.088Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c/adminSdkConfig [none]
+[debug] [2023-04-04T22:29:39.463Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c/adminSdkConfig 200
+[debug] [2023-04-04T22:29:39.464Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c/adminSdkConfig {"projectId":"together-f0f2c","databaseURL":"https://together-f0f2c-default-rtdb.firebaseio.com","storageBucket":"together-f0f2c.appspot.com","locationId":"europe-west3"}
+[debug] [2023-04-04T22:29:39.466Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/together-f0f2c/configs [none]
+[debug] [2023-04-04T22:29:39.946Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/together-f0f2c/configs 200
+[debug] [2023-04-04T22:29:39.949Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/together-f0f2c/configs {}
+[debug] [2023-04-04T22:29:40.018Z] Validating nodejs source
+[debug] [2023-04-04T22:29:50.182Z] checkFunctionsSDKVersion was unable to fetch information from NPM Error: spawnSync npm ETIMEDOUT
+    at Object.spawnSync (node:internal/child_process:1117:20)
+    at Object.spawnSync (node:child_process:871:24)
+    at Function.spawnSync [as sync] (/usr/lib/node_modules/firebase-tools/node_modules/cross-spawn/index.js:26:23)
+    at Object.getLatestSDKVersion (/usr/lib/node_modules/firebase-tools/lib/deploy/functions/runtimes/node/versioning.js:55:25)
+    at Object.checkFunctionsSDKVersion (/usr/lib/node_modules/firebase-tools/lib/deploy/functions/runtimes/node/versioning.js:76:32)
+    at Delegate.validate (/usr/lib/node_modules/firebase-tools/lib/deploy/functions/runtimes/node/index.js:84:20)
+    at loadCodebases (/usr/lib/node_modules/firebase-tools/lib/deploy/functions/prepare.js:300:31)
+    at async prepare (/usr/lib/node_modules/firebase-tools/lib/deploy/functions/prepare.js:58:24)
+    at async chain (/usr/lib/node_modules/firebase-tools/lib/deploy/index.js:35:9)
+    at async deploy (/usr/lib/node_modules/firebase-tools/lib/deploy/index.js:79:5)
+[debug] [2023-04-04T22:29:50.298Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^11.5.0",
+    "firebase-functions": "^4.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^3.0.0"
+  },
+  "private": true
+}
+[debug] [2023-04-04T22:29:50.305Z] Building nodejs source
+[debug] [2023-04-04T22:29:50.350Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-04-04T22:29:50.455Z] Found firebase-functions binary at '/home/mosaleh/AndroidStudioProjects/Together/functions/node_modules/.bin/firebase-functions'
+[debug] [2023-04-04T22:29:55.301Z] Serving at port 8966
+
+[debug] [2023-04-04T22:30:00.881Z] Got response from /__/functions.yaml {"endpoints":{"sendCaseNotification":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"eventTrigger":{"eventType":"providers/cloud.firestore/eventTypes/document.write","eventFilters":{"resource":"projects/together-f0f2c/databases/(default)/documents/cases/"},"retry":false},"labels":{},"entryPoint":"sendCaseNotification"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2023-04-04T22:30:01.017Z] shutdown requested via /__/quitquitquit
+
+[info] i  functions: preparing functions directory for uploading... 
+[info] i  functions: packaged /home/mosaleh/AndroidStudioProjects/Together/functions (141.8 KB) for uploading 
+[debug] [2023-04-04T22:30:02.130Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/-/functions [none]
+[debug] [2023-04-04T22:30:02.914Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/-/functions 200
+[debug] [2023-04-04T22:30:02.915Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/-/functions {"functions":[{"name":"projects/together-f0f2c/locations/us-central1/functions/GeoNotification","httpsTrigger":{"url":"https://us-central1-together-f0f2c.cloudfunctions.net/GeoNotification","securityLevel":"SECURE_ALWAYS"},"status":"OFFLINE","entryPoint":"GeoNotification","timeout":"60s","availableMemoryMb":256,"serviceAccountEmail":"together-f0f2c@appspot.gserviceaccount.com","updateTime":"2023-04-04T22:18:56.284Z","versionId":"1","labels":{"deployment-tool":"console-cloud"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-979323974809.us-central1.cloudfunctions.appspot.com/42a76bf0-fa64-4c47-8cf0-f074faa134e6.zip","runtime":"nodejs18","maxInstances":3000,"ingressSettings":"ALLOW_ALL","buildId":"a670e323-3929-413e-81ff-d6eb38648aa2","buildName":"projects/80841527552/locations/us-central1/builds/a670e323-3929-413e-81ff-d6eb38648aa2","dockerRegistry":"CONTAINER_REGISTRY"}]}
+[debug] [2023-04-04T22:30:02.949Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/together-f0f2c/locations/-/functions filter=environment%3D%22GEN_2%22
+[debug] [2023-04-04T22:30:04.020Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/together-f0f2c/locations/-/functions 200
+[debug] [2023-04-04T22:30:04.020Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/together-f0f2c/locations/-/functions {}
+[debug] [2023-04-04T22:30:04.086Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c [none]
+[debug] [2023-04-04T22:30:04.549Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c 200
+[debug] [2023-04-04T22:30:04.549Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/together-f0f2c {"projectId":"together-f0f2c","projectNumber":"80841527552","displayName":"Together","name":"projects/together-f0f2c","resources":{"hostingSite":"together-f0f2c","realtimeDatabaseInstance":"together-f0f2c-default-rtdb","storageBucket":"together-f0f2c.appspot.com","locationId":"europe-west3"},"state":"ACTIVE","etag":"1_77c00981-9520-4e5e-8ace-64ddd87b3c81"}
+[debug] [2023-04-04T22:30:04.554Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions:generateUploadUrl [none]
+[debug] [2023-04-04T22:30:04.554Z] >>> [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions:generateUploadUrl {}
+[debug] [2023-04-04T22:30:05.166Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions:generateUploadUrl 200
+[debug] [2023-04-04T22:30:05.166Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions:generateUploadUrl {"uploadUrl":"https://storage.googleapis.com/uploads-979323974809.us-central1.cloudfunctions.appspot.com/321c766f-b95d-44dd-be54-130132cfb844.zip?GoogleAccessId=service-80841527552@gcf-admin-robot.iam.gserviceaccount.com&Expires=1680649204&Signature=bKfEGg2Z2zemSSFZNTtnc%2BCJ2PlwEMkJKF0WeN%2By68cjEKiNOUs%2Bv8QGiVsUE%2FU1mITOMgDYueHI1OGSxPXk1sfpJQjdB%2BiScU1%2FEoCi%2BCkDTKDRBG5uIdEjI2j1L%2F7oUHoJO0hyKlzYdpniwW4COKPquGQb0htJQHNze5%2FgDMZbv05IkqJLw49BvkRko9zqETjeoFfXiSLGKNi0WZfvi%2F%2FL%2ByXYCef4MEKylT5QEOysh1EiOwNy2B2LWTl6zI%2Fn1hbxWrYDSWkz1%2Bvekd0Dzxjzjx9kHsrQAnTqknTfful8%2Bwbt2fytK%2FB2LtAR9e6fLwh7MoflEMEwDwDmiZMmQA%3D%3D"}
+[debug] [2023-04-04T22:30:05.172Z] >>> [apiv2][query] PUT https://storage.googleapis.com/uploads-979323974809.us-central1.cloudfunctions.appspot.com/321c766f-b95d-44dd-be54-130132cfb844.zip GoogleAccessId=service-80841527552%40gcf-admin-robot.iam.gserviceaccount.com&Expires=1680649204&Signature=bKfEGg2Z2zemSSFZNTtnc%2BCJ2PlwEMkJKF0WeN%2By68cjEKiNOUs%2Bv8QGiVsUE%2FU1mITOMgDYueHI1OGSxPXk1sfpJQjdB%2BiScU1%2FEoCi%2BCkDTKDRBG5uIdEjI2j1L%2F7oUHoJO0hyKlzYdpniwW4COKPquGQb0htJQHNze5%2FgDMZbv05IkqJLw49BvkRko9zqETjeoFfXiSLGKNi0WZfvi%2F%2FL%2ByXYCef4MEKylT5QEOysh1EiOwNy2B2LWTl6zI%2Fn1hbxWrYDSWkz1%2Bvekd0Dzxjzjx9kHsrQAnTqknTfful8%2Bwbt2fytK%2FB2LtAR9e6fLwh7MoflEMEwDwDmiZMmQA%3D%3D
+[debug] [2023-04-04T22:30:05.173Z] >>> [apiv2][body] PUT https://storage.googleapis.com/uploads-979323974809.us-central1.cloudfunctions.appspot.com/321c766f-b95d-44dd-be54-130132cfb844.zip [stream]
+[debug] [2023-04-04T22:30:07.005Z] <<< [apiv2][status] PUT https://storage.googleapis.com/uploads-979323974809.us-central1.cloudfunctions.appspot.com/321c766f-b95d-44dd-be54-130132cfb844.zip 200
+[debug] [2023-04-04T22:30:07.006Z] <<< [apiv2][body] PUT https://storage.googleapis.com/uploads-979323974809.us-central1.cloudfunctions.appspot.com/321c766f-b95d-44dd-be54-130132cfb844.zip [omitted]
+[info] ✔  functions: functions folder uploaded successfully 
+[info] i  functions: creating Node.js 16 function sendCaseNotification(us-central1)... 
+[debug] [2023-04-04T22:30:07.276Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions [none]
+[debug] [2023-04-04T22:30:07.276Z] >>> [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions {"name":"projects/together-f0f2c/locations/us-central1/functions/sendCaseNotification","sourceUploadUrl":"https://storage.googleapis.com/uploads-979323974809.us-central1.cloudfunctions.appspot.com/321c766f-b95d-44dd-be54-130132cfb844.zip?GoogleAccessId=service-80841527552@gcf-admin-robot.iam.gserviceaccount.com&Expires=1680649204&Signature=bKfEGg2Z2zemSSFZNTtnc%2BCJ2PlwEMkJKF0WeN%2By68cjEKiNOUs%2Bv8QGiVsUE%2FU1mITOMgDYueHI1OGSxPXk1sfpJQjdB%2BiScU1%2FEoCi%2BCkDTKDRBG5uIdEjI2j1L%2F7oUHoJO0hyKlzYdpniwW4COKPquGQb0htJQHNze5%2FgDMZbv05IkqJLw49BvkRko9zqETjeoFfXiSLGKNi0WZfvi%2F%2FL%2ByXYCef4MEKylT5QEOysh1EiOwNy2B2LWTl6zI%2Fn1hbxWrYDSWkz1%2Bvekd0Dzxjzjx9kHsrQAnTqknTfful8%2Bwbt2fytK%2FB2LtAR9e6fLwh7MoflEMEwDwDmiZMmQA%3D%3D","entryPoint":"sendCaseNotification","runtime":"nodejs16","dockerRegistry":"ARTIFACT_REGISTRY","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"f18d39e64707a720e0e81b03090ee619764e338f"},"eventTrigger":{"eventType":"providers/cloud.firestore/eventTypes/document.write","resource":"projects/together-f0f2c/databases/(default)/documents/cases/"},"minInstances":null,"maxInstances":null,"ingressSettings":null,"environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"together-f0f2c\",\"databaseURL\":\"https://together-f0f2c-default-rtdb.firebaseio.com\",\"storageBucket\":\"together-f0f2c.appspot.com\",\"locationId\":\"europe-west3\"}","GCLOUD_PROJECT":"together-f0f2c","EVENTARC_CLOUD_EVENT_SOURCE":"projects/together-f0f2c/locations/us-central1/functions/sendCaseNotification"},"serviceAccountEmail":null,"availableMemoryMb":null,"timeout":null,"vpcConnector":null,"vpcConnectorEgressSettings":null}
+[debug] [2023-04-04T22:30:07.728Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions 400
+[debug] [2023-04-04T22:30:07.728Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/together-f0f2c/locations/us-central1/functions {"error":{"code":400,"message":"The request has errors","status":"INVALID_ARGUMENT","details":[{"@type":"type.googleapis.com/google.rpc.BadRequest","fieldViolations":[{"field":"event_trigger","description":"Expected value cases/ to match regular expression [^/]+/[^/]+(/[^/]+/[^/]+)*"}]}]}}
+[warn] ⚠  functions: failed to create function projects/together-f0f2c/locations/us-central1/functions/sendCaseNotification 
+[error] Failed to create function projects/together-f0f2c/locations/us-central1/functions/sendCaseNotification
+[debug] [2023-04-04T22:30:08.318Z] Total Function Deployment time: 731
+[debug] [2023-04-04T22:30:08.318Z] 1 Functions Deployed
+[debug] [2023-04-04T22:30:08.318Z] 1 Functions Errored
+[debug] [2023-04-04T22:30:08.318Z] 0 Function Deployments Aborted
+[debug] [2023-04-04T22:30:08.318Z] Average Function Deployment time: 671
+[info] 
+[info] Functions deploy had errors with the following functions:
+	sendCaseNotification(us-central1)
+[info] i  functions: cleaning up build files... 
+[debug] [2023-04-04T22:30:08.788Z] >>> [apiv2][query] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/together-f0f2c/locations/us-central1/repositories/gcf-artifacts/packages/send_case_notification [none]
+[debug] [2023-04-04T22:30:08.793Z] >>> [apiv2][query] GET https://us.gcr.io/v2/together-f0f2c/gcf/us-central1/tags/list [none]
+[debug] [2023-04-04T22:30:09.563Z] <<< [apiv2][status] GET https://us.gcr.io/v2/together-f0f2c/gcf/us-central1/tags/list 200
+[debug] [2023-04-04T22:30:09.574Z] <<< [apiv2][body] GET https://us.gcr.io/v2/together-f0f2c/gcf/us-central1/tags/list {"child":["6f14a428-95ce-4599-9fbb-d23f0741d3ed"],"manifest":{},"name":"together-f0f2c/gcf/us-central1","tags":[]}
+[debug] [2023-04-04T22:30:09.574Z] >>> [apiv2][query] GET https://us.gcr.io/v2/together-f0f2c/gcf/us-central1/6f14a428-95ce-4599-9fbb-d23f0741d3ed/tags/list [none]
+[debug] [2023-04-04T22:30:09.883Z] <<< [apiv2][status] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/together-f0f2c/locations/us-central1/repositories/gcf-artifacts/packages/send_case_notification 404
+[debug] [2023-04-04T22:30:09.883Z] <<< [apiv2][body] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/together-f0f2c/locations/us-central1/repositories/gcf-artifacts/packages/send_case_notification {"error":{"code":404,"message":"Package \"projects/together-f0f2c/locations/us-central1/repositories/gcf-artifacts/packages/send_case_notification\" was not found.","status":"NOT_FOUND"}}
+[debug] [2023-04-04T22:30:09.980Z] <<< [apiv2][status] GET https://us.gcr.io/v2/together-f0f2c/gcf/us-central1/6f14a428-95ce-4599-9fbb-d23f0741d3ed/tags/list 200
+[debug] [2023-04-04T22:30:09.981Z] <<< [apiv2][body] GET https://us.gcr.io/v2/together-f0f2c/gcf/us-central1/6f14a428-95ce-4599-9fbb-d23f0741d3ed/tags/list {"child":["cache"],"manifest":{"sha256:282f52c7e98d76d64d90429a50be62cc2044fdabb87ac246980a41c222aba6cb":{"imageSizeBytes":"207611971","layerId":"","mediaType":"application/vnd.docker.distribution.manifest.v2+json","tag":["GeoNotification_version-1","latest"],"timeCreatedMs":"315532801000","timeUploadedMs":"1680646715235"}},"name":"together-f0f2c/gcf/us-central1/6f14a428-95ce-4599-9fbb-d23f0741d3ed","tags":["GeoNotification_version-1","latest"]}
+[debug] [2023-04-04T22:30:09.981Z] Could not find image for function projects/together-f0f2c/locations/us-central1/functions/sendCaseNotification
+[debug] [2023-04-04T22:30:09.982Z] Functions deploy failed.
+[debug] [2023-04-04T22:30:09.988Z] {
+  "endpoint": {
+    "id": "sendCaseNotification",
+    "project": "together-f0f2c",
+    "region": "us-central1",
+    "entryPoint": "sendCaseNotification",
+    "platform": "gcfv1",
+    "runtime": "nodejs16",
+    "eventTrigger": {
+      "eventType": "providers/cloud.firestore/eventTypes/document.write",
+      "retry": false,
+      "eventFilters": {
+        "resource": "projects/together-f0f2c/databases/(default)/documents/cases/"
+      }
+    },
+    "labels": {
+      "deployment-tool": "cli-firebase"
+    },
+    "serviceAccount": null,
+    "ingressSettings": null,
+    "availableMemoryMb": null,
+    "timeoutSeconds": null,
+    "maxInstances": null,
+    "minInstances": null,
+    "vpc": null,
+    "environmentVariables": {
+      "FIREBASE_CONFIG": "{\"projectId\":\"together-f0f2c\",\"databaseURL\":\"https://together-f0f2c-default-rtdb.firebaseio.com\",\"storageBucket\":\"together-f0f2c.appspot.com\",\"locationId\":\"europe-west3\"}",
+      "GCLOUD_PROJECT": "together-f0f2c",
+      "EVENTARC_CLOUD_EVENT_SOURCE": "projects/together-f0f2c/locations/us-central1/functions/sendCaseNotification"
+    },
+    "codebase": "default",
+    "targetedByOnly": false,
+    "hash": "f18d39e64707a720e0e81b03090ee619764e338f"
+  },
+  "op": "create",
+  "original": {
+    "name": "FirebaseError",
+    "children": [],
+    "context": {
+      "function": "projects/together-f0f2c/locations/us-central1/functions/sendCaseNotification"
+    },
+    "exit": 1,
+    "message": "Failed to create function projects/together-f0f2c/locations/us-central1/functions/sendCaseNotification",
+    "original": {
+      "name": "FirebaseError",
+      "children": [],
+      "context": {
+        "body": {
+          "error": {
+            "code": 400,
+            "message": "The request has errors",
+            "status": "INVALID_ARGUMENT",
+            "details": [
+              {
+                "@type": "type.googleapis.com/google.rpc.BadRequest",
+                "fieldViolations": [
+                  {
+                    "field": "event_trigger",
+                    "description": "Expected value cases/ to match regular expression [^/]+/[^/]+(/[^/]+/[^/]+)*"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "response": {
+          "statusCode": 400
+        }
+      },
+      "exit": 1,
+      "message": "HTTP Error: 400, The request has errors",
+      "status": 400
+    },
+    "status": 400
+  }
+}
+[debug] [2023-04-04T22:30:10.191Z] Error: Failed to create function sendCaseNotification in region us-central1
+    at /usr/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:48:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Fabricator.createV1Function (/usr/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:177:32)
+    at async Fabricator.createEndpoint (/usr/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:129:13)
+    at async handle (/usr/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:85:17)
+[error] 
+[error] Error: There was an error deploying functions

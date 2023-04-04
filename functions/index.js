@@ -1,32 +1,45 @@
-const admin = require("firebase-admin");
+
 const functions = require("firebase-functions");
+const admin = require("firebase-admin");
+
 admin.initializeApp();
-const token1 =
-       "eiYYUPsvTwy78vu3tfXA3E:APA91bH4pGZCPRPjRNMZ0Z"+
-       "_0hNN8uwUM4Ii6rhHM5xCiPMeQzT2SJAkdff95pN-goscP"+
-       "_UZe2kYSUowHZzX3SmGHIVBoWG8g8hn16U0suRMtIEGPqLYqbi_"+
-       "D6EXoVklkFe7nviHz7dPh";
-console.log(token1);
+const db = admin.firestore();
+exports.sendCaseNotification = functions.firestore
+    .document("cases/")
+    .onWrite(async (change, context) => {
+      const caseData = change.after.data();
+      const previousCaseData = change.before.data();
+      const caseId = context.params.caseId;
 
-const message = {
-  notification: {
-    title: "New message!",
-    body: "You have a new message from Firebase Cloud Messaging!",
-  },
-  token: token1,
-};
-console.log("created");
+      // Get list of users who are subscribed to notifications for this case
+      const tokens = [];
+      db.collection("tokens").get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          // Retrieve token value
+          const token = doc.data().token;
+          // Use token for notification sending
+          tokens.push(token);
+        });
+      }).catch((error) => {
+        console.log("Error getting tokens: ", error);
+      });
 
-module.exports = functions.database.ref("/cases")
-    .onCreate((snapshot, context) => {
-      console.log("onCreate");
-      // send notification here
-      admin.messaging().send(message)
-          .then((response) => {
-            console.log("Successfully sent message:", response);
-          })
-          .catch((error) => {
-            console.error("Error sending message:", error);
-          });
+      // Check if case status has changed
+      if (caseData.status !== previousCaseData.status) {
+        // Send notification to all subscribed users
+        const payload = {
+          notification: {
+            title: `Case ${caseId} updated`,
+            body: `Status: ${caseData.status}`,
+            clickAction: "FLUTTER_NOTIFICATION_CLICK",
+          },
+        };
+
+        const options = {
+          priority: "high",
+          timeToLive: 60 * 60 * 24,
+        };
+
+        await admin.messaging().sendToDevice(tokens, payload, options);
+      }
     });
-console.log("Done");

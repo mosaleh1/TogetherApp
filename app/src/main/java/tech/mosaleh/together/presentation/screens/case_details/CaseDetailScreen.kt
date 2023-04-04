@@ -15,8 +15,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Alignment.Companion.CenterVertically
@@ -79,8 +78,7 @@ fun CaseDetailsScreen(navController: NavHostController, case: Case) {
                 )
 
                 Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = CenterVertically
+                    modifier = Modifier.fillMaxWidth(), verticalAlignment = CenterVertically
                 ) {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_location),
@@ -101,8 +99,7 @@ fun CaseDetailsScreen(navController: NavHostController, case: Case) {
                 Spacer(modifier = Modifier.height(10.dp))
 
                 Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = CenterVertically
+                    modifier = Modifier.fillMaxWidth(), verticalAlignment = CenterVertically
                 ) {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_category),
@@ -119,8 +116,7 @@ fun CaseDetailsScreen(navController: NavHostController, case: Case) {
 
                 Spacer(modifier = Modifier.height(10.dp))
                 Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = CenterVertically
+                    modifier = Modifier.fillMaxWidth(), verticalAlignment = CenterVertically
                 ) {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_status),
@@ -137,8 +133,7 @@ fun CaseDetailsScreen(navController: NavHostController, case: Case) {
 
                 Spacer(modifier = Modifier.height(10.dp))
                 Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = CenterVertically
+                    modifier = Modifier.fillMaxWidth(), verticalAlignment = CenterVertically
                 ) {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_needs),
@@ -158,18 +153,36 @@ fun CaseDetailsScreen(navController: NavHostController, case: Case) {
                 rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
                     // Handle the result of the map intent here
                 }
-
-            Button(modifier =
-            Modifier.align(CenterHorizontally),
-                onClick = {
+            var isServedEnabled by remember {
+                mutableStateOf(false)
+            }
+            Row(
+                Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly
+            ) {
+                Button(onClick = {
+                    isServedEnabled = true
                     val uri =
                         Uri.parse("google.navigation:q=${case.caseAddress.lat},${case.caseAddress.lng}&mode=d")
                     val intent = Intent(Intent.ACTION_VIEW, uri)
                     intent.setPackage("com.google.android.apps.maps")
                     mapIntentLauncher.launch(intent)
                 }) {
-                Text(text = "Give support")
+                    Text(text = "Give support")
+                }
+
+                Button(enabled = isServedEnabled, onClick = {
+                    navController.navigate(
+                        route = Screens.Home.route
+                    )
+                    {
+                        popUpTo(Screens.CaseDetails.route)
+                    }
+                }) {
+                    Text(text = "Served")
+                }
             }
+
+
         }
     })
 }
